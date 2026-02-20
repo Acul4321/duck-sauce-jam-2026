@@ -41,14 +41,17 @@ jobs:
         with:
           name: web
           path: build/web
-      - name: Install rsync 📚
+      - name: Install Butler
         run: |
-          apt-get update && apt-get install -y rsync
+          apt-get update && apt-get install -y unzip
+          curl -L -o butler.zip https://broth.itch.io/butler/linux-amd64/LATEST/archive/default
+          unzip -q butler.zip
+          mv butler /usr/local/bin/butler
+          chmod +x /usr/local/bin/butler
       - name: Butler Upload
-        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
-          CHANNEL: web
           ITCH_GAME: ${{ secrets.ITCHIO_GAME }}
           ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
-          PACKAGE: build/web
+        run: |
+          butler push build/web ${ITCH_USER}/${ITCH_GAME}:web
