@@ -50,7 +50,7 @@ jobs:
           chmod +x /usr/local/bin/butler
       - name: Butler Upload
         env:
-          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_API_KEY }}
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
           ITCH_GAME: ${{ secrets.ITCHIO_GAME }}
           ITCH_USER: ${{ secrets.ITCHIO_USERNAME }}
         run: |
