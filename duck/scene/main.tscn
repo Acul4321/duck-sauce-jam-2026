@@ -1,3 +1,12 @@
 [gd_scene format=3 uid="uid://bwwfkr04jiqp8"]
 
+[ext_resource type="Script" uid="uid://bexync6v5m53c" path="res://script/planet_placement.gd" id="1_v0l8b"]
+[ext_resource type="Script" uid="uid://ddepf6gmso515" path="res://script/orbit_ghost_adaptive.gd" id="2_v0l8b"]
+
 [node name="main" type="Node2D" unique_id=1284121242]
+script = ExtResource("1_v0l8b")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1159543774]
+
+[node name="orbit_ghost" type="Node2D" parent="." unique_id=635131084]
+script = ExtResource("2_v0l8b")

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://omt51ibdp6mf"]
+
+[ext_resource type="Texture2D" uid="uid://cb0fpv6q4dv8j" path="res://script/circle.png" id="1_006vq"]
+[ext_resource type="Script" uid="uid://g8gb0nm1r42m" path="res://scene/planet/orbit_ghost_static.gd" id="1_m60lp"]
+[ext_resource type="Script" uid="uid://soemljmfvgrk" path="res://scene/planet/orbit_movement.gd" id="2_m3og4"]
+[ext_resource type="Script" path="res://scene/planet/orbit_create.gd" id="3_m3og4"]
+
+[sub_resource type="Curve2D" id="Curve2D_6tdng"]
+
+[node name="planet" type="Node2D" unique_id=1198807879]
+
+[node name="orbitGhost" type="Node2D" parent="." unique_id=694235899]
+script = ExtResource("1_m60lp")
+
+[node name="orbit" type="Path2D" parent="." unique_id=252744236]
+show_behind_parent = true
+curve = SubResource("Curve2D_6tdng")
+script = ExtResource("3_m3og4")
+
+[node name="orbitPath" type="PathFollow2D" parent="orbit" unique_id=1498181635]
+script = ExtResource("2_m3og4")
+
+[node name="planet" type="Sprite2D" parent="orbit/orbitPath" unique_id=1503329598]
+z_index = 1
+scale = Vector2(0.029, 0.029)
+texture = ExtResource("1_006vq")
