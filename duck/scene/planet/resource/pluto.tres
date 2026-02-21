@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlanetClass" format=3 uid="uid://b1mpt4055o2uj"]
+
+[ext_resource type="Script" uid="uid://bnp05a6gwm840" path="res://scene/planet/planet_class.gd" id="1_u1dfh"]
+[ext_resource type="Texture2D" uid="uid://c20umgja8s0e6" path="res://asset/sprite/planet/Pluto.png" id="2_f0hxe"]
+
+[resource]
+script = ExtResource("1_u1dfh")
+texture = ExtResource("2_f0hxe")
+a = 150.0
+b = 100.0
+speed = 200.0
+scale = 0.015
+metadata/_custom_type_script = "uid://bnp05a6gwm840"

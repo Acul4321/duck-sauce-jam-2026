@@ -1,14 +1,18 @@
 extends Node2D
 
-@export var a : float = 200.0
-@export var b : float = 120.0
+@export var a : float
+@export var b : float 
 @export var resolution : int = 100
 
 func _ready() -> void:
 	queue_redraw()
+	a = Planet.current_planet.a
+	b = Planet.current_planet.b
 
 func _process(_delta: float) -> void:
 	queue_redraw()
+	a = Planet.current_planet.a
+	b = Planet.current_planet.b
 
 func _draw():
 	var mouse_pos = get_global_mouse_position()

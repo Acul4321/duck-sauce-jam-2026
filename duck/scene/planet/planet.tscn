@@ -3,9 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://cb0fpv6q4dv8j" path="res://script/circle.png" id="1_006vq"]
 [ext_resource type="Script" uid="uid://g8gb0nm1r42m" path="res://scene/planet/orbit_ghost_static.gd" id="1_m60lp"]
 [ext_resource type="Script" uid="uid://soemljmfvgrk" path="res://scene/planet/orbit_movement.gd" id="2_m3og4"]
-[ext_resource type="Script" path="res://scene/planet/orbit_create.gd" id="3_m3og4"]
+[ext_resource type="Script" uid="uid://bpjatkbhobaod" path="res://scene/planet/orbit_create.gd" id="3_m3og4"]
 
 [sub_resource type="Curve2D" id="Curve2D_6tdng"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3og4"]
+radius = 49.477478
 
 [node name="planet" type="Node2D" unique_id=1198807879]
 
@@ -24,3 +27,10 @@ script = ExtResource("2_m3og4")
 z_index = 1
 scale = Vector2(0.029, 0.029)
 texture = ExtResource("1_006vq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1189718595]
+scale = Vector2(23.895, 23.895)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1391066728]
+shape = SubResource("CircleShape2D_m3og4")
+debug_color = Color(0.80036366, 0.40141302, 0.33861244, 0.98039216)
