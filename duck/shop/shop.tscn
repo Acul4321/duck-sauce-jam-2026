@@ -6,6 +6,15 @@
 [ext_resource type="Resource" uid="uid://b1mpt4055o2uj" path="res://scene/planet/resource/pluto.tres" id="3_mrnko"]
 [ext_resource type="Resource" uid="uid://boei4mbxp7ycn" path="res://scene/planet/resource/neptune.tres" id="4_gy7ao"]
 [ext_resource type="PackedScene" uid="uid://dipyero5jxqdc" path="res://shop/shop_popup.tscn" id="5_gy7ao"]
+[ext_resource type="Resource" uid="uid://cd48srt3mju2g" path="res://scene/planet/resource/jupiter.tres" id="7_2wf2a"]
+[ext_resource type="Resource" uid="uid://dtwwd3wedory6" path="res://scene/planet/resource/earth.tres" id="8_xad5q"]
+[ext_resource type="Resource" uid="uid://f151hj27vfim" path="res://scene/planet/resource/moon.tres" id="9_ljlg5"]
+[ext_resource type="Resource" uid="uid://cw8bkhrauvs62" path="res://scene/planet/resource/mercury.tres" id="9_yrv44"]
+[ext_resource type="Resource" uid="uid://c5w3s3uvnrbvd" path="res://scene/planet/resource/mars.tres" id="10_pafut"]
+[ext_resource type="Resource" uid="uid://cce0m3sbic43y" path="res://scene/planet/resource/venus.tres" id="11_hv745"]
+[ext_resource type="Resource" uid="uid://b8mmwet16xvti" path="res://scene/planet/resource/uranus.tres" id="12_c8ks2"]
+[ext_resource type="Resource" uid="uid://bw330ajtnjukp" path="res://scene/planet/resource/saturn.tres" id="13_k6x22"]
+[ext_resource type="Resource" uid="uid://cpv646x786p37" path="res://scene/planet/resource/sun.tres" id="14_pafut"]
 
 [node name="Shop" type="Node2D" unique_id=1777051978 node_paths=PackedStringArray("shopPopup")]
 script = ExtResource("1_q4g17")
@@ -30,15 +39,83 @@ offset_right = 1080.0
 offset_bottom = 352.0
 planet = ExtResource("4_gy7ao")
 
+[node name="Jupiter" parent="." unique_id=1328344918 instance=ExtResource("2_sxvro")]
+offset_left = 920.0
+offset_top = 176.0
+offset_right = 1032.0
+offset_bottom = 280.0
+disabled = true
+planet = ExtResource("7_2wf2a")
+
+[node name="Earth" parent="." unique_id=1428499251 instance=ExtResource("2_sxvro")]
+offset_left = 672.0
+offset_top = 296.0
+offset_right = 784.0
+offset_bottom = 392.0
+planet = ExtResource("8_xad5q")
+
+[node name="Mercury" parent="." unique_id=2049855629 instance=ExtResource("2_sxvro")]
+offset_left = 856.0
+offset_top = 208.0
+offset_right = 920.0
+offset_bottom = 272.0
+planet = ExtResource("9_yrv44")
+
+[node name="Mars" parent="." unique_id=1981060386 instance=ExtResource("2_sxvro")]
+offset_left = 736.0
+offset_top = 152.0
+offset_right = 800.0
+offset_bottom = 216.0
+planet = ExtResource("10_pafut")
+
+[node name="Venus" parent="." unique_id=1200790081 instance=ExtResource("2_sxvro")]
+offset_left = 832.0
+offset_top = 376.0
+offset_right = 896.0
+offset_bottom = 440.0
+planet = ExtResource("11_hv745")
+
+[node name="Uranus" parent="." unique_id=1728025554 instance=ExtResource("2_sxvro")]
+offset_left = 544.0
+offset_top = 264.0
+offset_right = 608.0
+offset_bottom = 328.0
+planet = ExtResource("12_c8ks2")
+
+[node name="Saturn" parent="." unique_id=770888722 instance=ExtResource("2_sxvro")]
+offset_left = 608.0
+offset_top = 168.0
+offset_right = 672.0
+offset_bottom = 232.0
+planet = ExtResource("13_k6x22")
+
+[node name="Moon" parent="." unique_id=735132464 instance=ExtResource("2_sxvro")]
+offset_left = 664.0
+offset_top = 256.0
+offset_right = 728.0
+offset_bottom = 320.0
+planet = ExtResource("9_ljlg5")
+
+[node name="Sun" parent="." unique_id=559638262 instance=ExtResource("2_sxvro")]
+offset_left = 792.0
+offset_top = 264.0
+offset_right = 856.0
+offset_bottom = 328.0
+disabled = true
+planet = ExtResource("14_pafut")
+
 [node name="ShopPopup" parent="." unique_id=1535993591 instance=ExtResource("5_gy7ao")]
 visible = false
-position = Vector2(472, 96)
-
-[node name="PlanetButton" parent="." unique_id=1328344918 instance=ExtResource("2_sxvro")]
-offset_left = 944.0
-offset_top = 200.0
-offset_right = 1008.0
-offset_bottom = 264.0
+position = Vector2(40, 40)
 
 [connection signal="pressed" from="Pluto" to="." method="_on_pluto_pressed"]
 [connection signal="pressed" from="Neptune" to="." method="_on_neptune_pressed"]
+[connection signal="pressed" from="Jupiter" to="." method="_on_jupiter_pressed"]
+[connection signal="pressed" from="Earth" to="." method="_on_earth_pressed"]
+[connection signal="pressed" from="Mercury" to="." method="_on_mercury_pressed"]
+[connection signal="pressed" from="Mars" to="." method="_on_mars_pressed"]
+[connection signal="pressed" from="Venus" to="." method="_on_venus_pressed"]
+[connection signal="pressed" from="Uranus" to="." method="_on_uranus_pressed"]
+[connection signal="pressed" from="Saturn" to="." method="_on_saturn_pressed"]
+[connection signal="pressed" from="Moon" to="." method="_on_moon_pressed"]
+[connection signal="pressed" from="Sun" to="." method="_on_sun_pressed"]
