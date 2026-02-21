@@ -10,10 +10,16 @@ var mouse_over_planet: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Load all available planets
+	planets.append(preload("res://scene/planet/resource/pluto.tres"))
+	#moon
+	#mercury
+	#mars
+	#venus
 	planets.append(preload("res://scene/planet/resource/earth.tres"))
 	planets.append(preload("res://scene/planet/resource/neptune.tres"))
-	planets.append(preload("res://scene/planet/resource/pluto.tres"))
 	planets.append(preload("res://scene/planet/resource/uranus.tres"))
+	#saturn
+	#jupyter
 	planets.append(preload("res://scene/planet/resource/sun.tres"))
 	
 	# Set earth as default
@@ -51,6 +57,11 @@ func set_planet(planet_resource: PlanetClass) -> void:
 # Get the current planet resource
 func get_planet() -> PlanetClass:
 	return current_planet
+
+
+# Get the index of a planet resource in the planets array
+func get_planet_index(planet_resource: PlanetClass) -> int:
+	return planets.find(planet_resource)
 
 
 # Helper function to create and configure a planet node

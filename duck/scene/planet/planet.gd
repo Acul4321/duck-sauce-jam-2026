@@ -33,6 +33,26 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 	if area.owner is Node2D and area.owner.has_method("_ready"):
 		print("Planet collision detected with: ", area.owner.name)
 		
+		# Check if both planets are the same type
+		var other_planet_resource = area.owner.planet_resource
+		if not other_planet_resource:
+			return
+		
+		# If different planet types, destroy the smaller one
+		if planet_resource != other_planet_resource:
+			var this_index = Planet.get_planet_index(planet_resource)
+			var other_index = Planet.get_planet_index(other_planet_resource)
+			
+			if this_index < other_index:
+				# This planet is smaller, destroy it
+				self.queue_free()
+			elif other_index < this_index:
+				# Other planet is smaller, destroy it
+				area.owner.queue_free()
+			
+			print("Different planet types - smaller planet destroyed")
+			return
+		
 		# Get the two planet positions and calculate midpoint
 		var this_pos = global_position
 		var other_pos = area.owner.global_position
