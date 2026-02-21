@@ -9,7 +9,7 @@ func _ready() -> void:
 	# Create the preview sprite
 	preview_sprite = Sprite2D.new()
 	preview_sprite.modulate = Color(1, 1, 1, 0.5)  # 50% transparent
-	add_child(preview_sprite)
+	%game.add_child(preview_sprite)
 	
 	# Update preview with initial planet
 	update_preview()
@@ -42,4 +42,4 @@ func spawn_planet_at_mouse() -> void:
 	var mouse_pos = get_global_mouse_position()
 	var current_planet = Planet.get_planet()
 	var new_planet = Planet._create_planet_node(current_planet, mouse_pos)
-	add_child(new_planet)
+	%game.add_child(new_planet)
