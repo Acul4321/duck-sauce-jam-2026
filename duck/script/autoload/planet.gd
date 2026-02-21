@@ -8,6 +8,10 @@ var mouse_over_planet: bool = false
 var can_place: bool = true
 var place_mode: bool = false
 
+# Dictionary to track how many of each planet type are currently orbiting
+# Key: planet name (String), Value: count (int)
+var orbiting_planets: Dictionary = {}
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -66,6 +70,39 @@ func get_planet_index(planet_resource: PlanetClass) -> int:
 	return planets.find(planet_resource)
 
 
+# Add a planet to the orbiting count
+func add_orbiting_planet(planet_resource: PlanetClass) -> void:
+	var planet_name = planet_resource.name
+	if not orbiting_planets.has(planet_name):
+		orbiting_planets[planet_name] = 0
+	orbiting_planets[planet_name] += 1
+	print("Added ", planet_name, ". Total: ", orbiting_planets[planet_name])
+
+
+# Remove a planet from the orbiting count
+func remove_orbiting_planet(planet_resource: PlanetClass) -> void:
+	var planet_name = planet_resource.name
+	if orbiting_planets.has(planet_name) and orbiting_planets[planet_name] > 0:
+		orbiting_planets[planet_name] -= 1
+		print("Removed ", planet_name, ". Total: ", orbiting_planets[planet_name])
+
+
+# Get count of a specific planet type
+func get_planet_count(planet_resource: PlanetClass) -> int:
+	var planet_name = planet_resource.name
+	if orbiting_planets.has(planet_name):
+		return orbiting_planets[planet_name]
+	return 0
+
+
+# Get total count of all orbiting planets
+func get_total_planet_count() -> int:
+	var total = 0
+	for count in orbiting_planets.values():
+		total += count
+	return total
+
+
 # Helper function to create and configure a planet node
 func _create_planet_node(planet_resource: PlanetClass, position: Vector2, progress: float = 0.0) -> Node2D:
 	var planet_scene = preload("res://scene/planet/planet.tscn")
@@ -99,4 +136,15 @@ func _create_planet_node(planet_resource: PlanetClass, position: Vector2, progre
 		orbit.a = planet_resource.a
 		orbit.b = planet_resource.b
 	
+	# Connect to the planet's tree_exiting signal to track when it's removed
+	new_planet.tree_exiting.connect(_on_planet_removed.bind(planet_resource))
+	
+	# Track this planet as orbiting
+	add_orbiting_planet(planet_resource)
+	
 	return new_planet
+
+
+# Called when a planet is removed from the scene tree
+func _on_planet_removed(planet_resource: PlanetClass) -> void:
+	remove_orbiting_planet(planet_resource)
