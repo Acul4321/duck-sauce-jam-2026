@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlanetClass" format=3 uid="uid://f151hj27vfim"]
+
+[ext_resource type="Script" uid="uid://bnp05a6gwm840" path="res://scene/planet/planet_class.gd" id="1_btjm6"]
+[ext_resource type="Texture2D" uid="uid://lo74ln305pfq" path="res://asset/sprite/planet/Earth.png" id="2_ocbki"]
+
+[resource]
+script = ExtResource("1_btjm6")
+texture = ExtResource("2_ocbki")
+a = 180.0
+b = 200.0
+metadata/_custom_type_script = "uid://bnp05a6gwm840"
