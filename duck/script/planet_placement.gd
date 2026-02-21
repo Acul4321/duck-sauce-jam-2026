@@ -2,6 +2,7 @@ extends Node2D
 
 var planet_scene = preload("res://scene/planet/planet.tscn")
 var preview_sprite: Sprite2D
+@onready var orbit_ghost: Node2D = get_node("game/orbit_ghost")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +21,9 @@ func _process(delta: float) -> void:
 	# Update preview position to follow mouse
 	if preview_sprite:
 		preview_sprite.global_position = get_global_mouse_position()
+		preview_sprite.visible = Planet.place_mode
+		if orbit_ghost:
+			orbit_ghost.visible = Planet.place_mode
 		if Planet.can_place:
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
 		else:
@@ -29,7 +33,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		update_preview()
 	
-	if Input.is_action_just_pressed("place") and Planet.can_place:
+	if Input.is_action_just_pressed("place") and Planet.can_place and Planet.place_mode:
 		spawn_planet_at_mouse()
 
 
