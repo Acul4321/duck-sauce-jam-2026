@@ -11,4 +11,5 @@ scale = 0.054
 name = "Neptune"
 cost = 200
 reward = 100.0
+required = 2
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
