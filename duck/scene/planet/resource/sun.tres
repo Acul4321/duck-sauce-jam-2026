@@ -9,4 +9,6 @@ texture = ExtResource("2_x6yq1")
 b = 200.0
 speed = 50.0
 scale = 0.105
+name = "Sun"
+cost = 99999
 metadata/_custom_type_script = "uid://bnp05a6gwm840"

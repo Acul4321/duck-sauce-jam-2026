@@ -10,4 +10,6 @@ a = 190.785
 b = 187.925
 speed = 150.0
 scale = 0.046
+name = "Earth"
+cost = 50
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
