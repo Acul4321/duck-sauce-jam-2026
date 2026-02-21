@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1771688014|16345620';
+const CACHE_VERSION = '1771688438|15365037';
 /** @type {string} */
 const CACHE_PREFIX = 'duck-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
