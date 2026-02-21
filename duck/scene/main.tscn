@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bexync6v5m53c" path="res://script/planet_placement.gd" id="1_v0l8b"]
 [ext_resource type="Script" uid="uid://ddepf6gmso515" path="res://script/orbit_ghost_adaptive.gd" id="2_v0l8b"]
 [ext_resource type="Texture2D" uid="uid://cbrqaleph6iqe" path="res://asset/sprite/DarkMatter.png" id="2_wp4xf"]
-[ext_resource type="Script" uid="uid://ddtx0s5ipothi" path="res://script/money_label.gd" id="4_brvut"]
+[ext_resource type="Script" path="res://script/money_label.gd" id="4_brvut"]
 
 [node name="main" type="Node2D" unique_id=1284121242]
 script = ExtResource("1_v0l8b")
@@ -37,3 +37,21 @@ texture = ExtResource("2_wp4xf")
 [node name="moneyLabel" type="Label" parent="Control/HBoxContainer" unique_id=1689536789]
 layout_mode = 2
 script = ExtResource("4_brvut")
+
+[node name="GameOverContainer" type="VBoxContainer" parent="Control" unique_id=1125874550]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 380.0
+offset_top = 206.99997
+offset_right = 695.0
+offset_bottom = 329.99997
+
+[node name="GameOverLabel" type="Label" parent="Control/GameOverContainer" unique_id=253641666]
+layout_mode = 2
+text = "You win - game over"
+horizontal_alignment = 1
+
+[node name="Return Button" type="Button" parent="Control/GameOverContainer" unique_id=1497990941]
+layout_mode = 2
+text = "Return to main menu"

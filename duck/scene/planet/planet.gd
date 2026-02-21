@@ -2,6 +2,7 @@ extends Node2D
 
 var planet_resource: PlanetClass
 
+@onready var gameOverContainer = %GameOverContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,6 +54,11 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 			print("Different planet types - smaller planet destroyed")
 			return
 		
+		if (planet_resource.texture.resource_name == "jupiter.tres"):
+			gameOverContainer.hide()
+			
+			return
+			
 		# Get the two planet positions and calculate midpoint
 		var this_pos = global_position
 		var other_pos = area.owner.global_position
