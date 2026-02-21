@@ -9,9 +9,11 @@
 texture = ExtResource("1_se8j8")
 region_rect = Rect2(38.28485, 384.01917, 3332.7952, 2469.3809)
 
-[node name="ShopPopup" type="Node2D" unique_id=1535993591 node_paths=PackedStringArray("planetImage")]
+[node name="ShopPopup" type="Node2D" unique_id=1535993591 node_paths=PackedStringArray("planetImage", "planetCost", "planetName")]
 script = ExtResource("1_toonk")
 planetImage = NodePath("Panel/PlanetImage")
+planetCost = NodePath("Panel/PlanetCost")
+planetName = NodePath("Panel/PlanetName")
 
 [node name="Panel" type="Panel" parent="." unique_id=1178250179]
 offset_right = 400.0
@@ -23,3 +25,25 @@ position = Vector2(122, 146)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("3_4bmwa")
 script = ExtResource("4_f6j5c")
+
+[node name="PlanetName" type="Label" parent="Panel" unique_id=1258177635]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 14.0
+offset_right = 180.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 24
+text = "Planet Name"
+
+[node name="PlanetCost" type="Label" parent="Panel" unique_id=376575573]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 240.0
+offset_right = 191.0
+offset_bottom = 285.0
+theme_override_colors/font_color = Color(0.5854947, 0.0809691, 0.45091182, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "1x"
+horizontal_alignment = 2
