@@ -4,6 +4,7 @@ extends Node
 var planets: Array[PlanetClass] = []
 var current_planet_index: int = 0
 var current_planet: PlanetClass
+var mouse_over_planet: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
