@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://eusxwuhm8yug"]
+
+[node name="TitleScreen" type="Node2D" unique_id=846253074]
+
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=206022062]
+offset_left = 12.0
+offset_top = 5.0
+offset_right = 110.0
+offset_bottom = 117.0
+scale = Vector2(0.98953223, 0.9960875)
+
+[node name="Label" type="Label" parent="Buttons" unique_id=551891810]
+layout_mode = 2
+text = "PLAN-iT"
+horizontal_alignment = 1
+
+[node name="MainGame" type="Button" parent="Buttons" unique_id=797735577]
+layout_mode = 2
+text = "Main Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitGame" type="Button" parent="Buttons" unique_id=902820371]
+layout_mode = 2
+text = "Quit Game"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Buttons" unique_id=961800653]
+layout_mode = 2
+text = "PLANET"
+horizontal_alignment = 1
