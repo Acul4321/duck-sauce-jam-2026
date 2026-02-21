@@ -13,7 +13,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	# Toggle button visibility based on place_mode
+	if Planet.place_mode:
+		shop_button.visible = false
+		bin_icon.visible = true
+	else:
+		shop_button.visible = true
+		bin_icon.visible = false
 
 
 func _on_shop_button_pressed() -> void:
