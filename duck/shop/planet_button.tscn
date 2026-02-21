@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bq8635ma6esi2"]
+
+[ext_resource type="Texture2D" uid="uid://dao4ksom1w83u" path="res://icon.svg" id="1_8vn1n"]
+[ext_resource type="Script" uid="uid://s0dm78rnegtl" path="res://shop/planet_button.gd" id="2_0xhbi"]
+
+[node name="PlanetButton" type="TextureButton" unique_id=2031071410]
+offset_right = 64.0
+offset_bottom = 64.0
+texture_normal = ExtResource("1_8vn1n")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_0xhbi")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,27 +1,40 @@
 [gd_scene format=3 uid="uid://ce4lbpt44xd00"]
 
+[ext_resource type="Script" uid="uid://crl6epw26753r" path="res://shop/shop.gd" id="1_q4g17"]
 [ext_resource type="Texture2D" uid="uid://b34hwpwt4e78g" path="res://shop/assets/sketch1771671122369.png" id="1_r2p71"]
-[ext_resource type="Texture2D" uid="uid://c20umgja8s0e6" path="res://asset/sprite/planet/Pluto.png" id="2_sxvro"]
-[ext_resource type="Script" uid="uid://s0dm78rnegtl" path="res://shop/planet_button.gd" id="3_givde"]
+[ext_resource type="PackedScene" uid="uid://bq8635ma6esi2" path="res://shop/planet_button.tscn" id="2_sxvro"]
+[ext_resource type="Resource" uid="uid://b1mpt4055o2uj" path="res://scene/planet/resource/pluto.tres" id="3_mrnko"]
+[ext_resource type="Resource" uid="uid://boei4mbxp7ycn" path="res://scene/planet/resource/neptune.tres" id="4_gy7ao"]
+[ext_resource type="PackedScene" uid="uid://dipyero5jxqdc" path="res://shop/shop_popup.tscn" id="5_gy7ao"]
+[ext_resource type="Script" uid="uid://ch2x51yyamem1" path="res://shop/shop_popup.gd" id="7_2wf2a"]
 
-[node name="Shop" type="Node2D" unique_id=1777051978]
+[node name="Shop" type="Node2D" unique_id=1777051978 node_paths=PackedStringArray("shopPopup")]
+script = ExtResource("1_q4g17")
+shopPopup = NodePath("ShopPopup")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=322037206]
 position = Vector2(576.00006, 324)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_r2p71")
 
-[node name="Pluto" type="TextureButton" parent="." unique_id=1464029676]
+[node name="Pluto" parent="." unique_id=2031071410 instance=ExtResource("2_sxvro")]
 offset_left = 896.0
 offset_top = 312.0
 offset_right = 960.0
 offset_bottom = 376.0
-texture_normal = ExtResource("2_sxvro")
-ignore_texture_size = true
-stretch_mode = 4
-script = ExtResource("3_givde")
+planet = ExtResource("3_mrnko")
 
-[connection signal="button_down" from="Pluto" to="Pluto" method="_on_button_down"]
-[connection signal="button_up" from="Pluto" to="Pluto" method="_on_button_up"]
-[connection signal="mouse_entered" from="Pluto" to="Pluto" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Pluto" to="Pluto" method="_on_mouse_exited"]
+[node name="Neptune" parent="." unique_id=1240407968 instance=ExtResource("2_sxvro")]
+offset_left = 992.0
+offset_top = 272.0
+offset_right = 1080.0
+offset_bottom = 352.0
+planet = ExtResource("4_gy7ao")
+
+[node name="ShopPopup" parent="." unique_id=1535993591 instance=ExtResource("5_gy7ao")]
+visible = false
+position = Vector2(472, 96)
+script = ExtResource("7_2wf2a")
+
+[connection signal="pressed" from="Pluto" to="." method="_on_pluto_pressed"]
+[connection signal="pressed" from="Neptune" to="." method="_on_neptune_pressed"]

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dipyero5jxqdc"]
+
+[ext_resource type="Texture2D" uid="uid://crfwqg53ivqg8" path="res://shop/assets/Template-PopUpShop.png" id="1_se8j8"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2q1m"]
+texture = ExtResource("1_se8j8")
+region_rect = Rect2(38.28485, 384.01917, 3332.7952, 2469.3809)
+
+[node name="ShopPopup" type="Node2D" unique_id=1535993591]
+
+[node name="Panel" type="Panel" parent="." unique_id=1178250179]
+offset_right = 400.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_x2q1m")

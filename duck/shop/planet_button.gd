@@ -1,26 +1,34 @@
 extends TextureButton
 
-var _is_pressed := false
-var _is_hovered := false
+@export var modulateHovered := Color(1.2, 1.2, 1.2, 1.0)
+@export var modulatePressed := Color(0.75, 0.75, 0.75, 1)
+@export var planet: PlanetClass
+
+var isPressed := false
+var isHovered := false
+
+func _ready() -> void:
+	if(planet):
+		texture_normal = planet.texture
 
 func _on_mouse_entered() -> void:
-	_is_hovered = true
-	if !_is_pressed: modulate = Color(1.2, 1.2, 1.2, 1.0)
+	isHovered = true
+	if !isPressed: modulate = modulateHovered
 
 
 func _on_mouse_exited() -> void:
-	_is_hovered = false
-	if !_is_pressed: modulate = Color(1,1,1,1)
+	isHovered = false
+	if !isPressed: modulate = Color(1,1,1,1)
 
 
 func _on_button_down() -> void:
-	_is_pressed = true
-	modulate = Color(0.75, 0.75, 0.75, 1)
+	isPressed = true
+	modulate = modulatePressed
 
 
 func _on_button_up() -> void:
-	_is_pressed = false
-	if _is_hovered:
-		modulate = Color(1.2, 1.2, 1.2, 1.0)
+	isPressed = false
+	if isHovered:
+		modulate = modulateHovered
 	else:
 		modulate = Color(1,1,1,1)
