@@ -2,6 +2,8 @@ extends TextureButton
 
 class_name BuyButton
 
+signal buy_pressed
+
 @export var modulateHovered := Color(1.2, 1.2, 1.2, 1.0)
 @export var modulatePressed := Color(0.75, 0.75, 0.75, 1)
 @export var modulateDisabled := Color(0.2, 0.2, 0.2, 1)
@@ -36,5 +38,6 @@ func _on_button_up() -> void:
 	isPressed = false
 	if isHovered:
 		modulate = modulateHovered
+		buy_pressed.emit()
 	else:
 		modulate = Color(1,1,1,1)

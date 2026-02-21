@@ -2,6 +2,7 @@ extends Node2D
 
 var planet_scene = preload("res://scene/planet/planet.tscn")
 var preview_sprite: Sprite2D
+var last_planet: PlanetClass = null
 @onready var orbit_ghost: Node2D = get_node("game/orbit_ghost")
 
 
@@ -17,7 +18,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Update preview position to follow mouse
 	if preview_sprite:
 		preview_sprite.global_position = get_global_mouse_position()
@@ -32,6 +33,12 @@ func _process(delta: float) -> void:
 	# Check if planet selection changed
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		update_preview()
+	
+	# Update preview if planet changed from shop
+	var current_planet = Planet.get_planet()
+	if current_planet != last_planet:
+		update_preview()
+		last_planet = current_planet
 	
 	if Input.is_action_just_pressed("place") and Planet.can_place and Planet.place_mode:
 		spawn_planet_at_mouse()
@@ -51,3 +58,5 @@ func spawn_planet_at_mouse() -> void:
 	var current_planet = Planet.get_planet()
 	var new_planet = Planet._create_planet_node(current_planet, mouse_pos)
 	%game.add_child(new_planet)
+	# Exit place mode after placing
+	Planet.place_mode = false
