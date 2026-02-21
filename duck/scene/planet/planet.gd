@@ -38,6 +38,21 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 		var other_pos = area.owner.global_position
 		var midpoint = (this_pos + other_pos) / 2.0
 		
+		# Get current progress from both planets' PathFollow2D
+		var this_progress = 0.0
+		var other_progress = 0.0
+		
+		if has_node("orbit/orbitPath"):
+			var path_follow = get_node("orbit/orbitPath")
+			this_progress = path_follow.progress
+		
+		if area.owner.has_node("orbit/orbitPath"):
+			var other_path_follow = area.owner.get_node("orbit/orbitPath")
+			other_progress = other_path_follow.progress
+		
+		# Average the progress values
+		var avg_progress = (this_progress + other_progress) / 2.0
+		
 		# Remove the colliding planets immediately
 		area.owner.free()
 		self.queue_free()
@@ -45,7 +60,7 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 		# Get next planet and create it at the midpoint
 		Planet.next_planet()
 		var next_planet_resource = Planet.get_planet()
-		var new_planet = Planet._create_planet_node(next_planet_resource, midpoint)
+		var new_planet = Planet._create_planet_node(next_planet_resource, midpoint, avg_progress)
 		
 		# Add to scene
 		get_parent().add_child(new_planet)

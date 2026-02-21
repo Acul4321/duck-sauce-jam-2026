@@ -54,7 +54,7 @@ func get_planet() -> PlanetClass:
 
 
 # Helper function to create and configure a planet node
-func _create_planet_node(planet_resource: PlanetClass, position: Vector2) -> Node2D:
+func _create_planet_node(planet_resource: PlanetClass, position: Vector2, progress: float = 0.0) -> Node2D:
 	var planet_scene = preload("res://scene/planet/planet.tscn")
 	var new_planet = planet_scene.instantiate()
 	new_planet.planet_resource = planet_resource
@@ -80,7 +80,9 @@ func _create_planet_node(planet_resource: PlanetClass, position: Vector2) -> Nod
 	if new_planet.has_node("orbit"):
 		var orbit = new_planet.get_node("orbit")
 		if orbit.has_node("orbitPath"):
-			orbit.get_node("orbitPath").speed = planet_resource.speed
+			var path_follow = orbit.get_node("orbitPath")
+			path_follow.speed = planet_resource.speed
+			path_follow.progress = progress
 		orbit.a = planet_resource.a
 		orbit.b = planet_resource.b
 	
