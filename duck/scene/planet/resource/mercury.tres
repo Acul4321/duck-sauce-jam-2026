@@ -7,5 +7,6 @@
 script = ExtResource("1_rhvdq")
 texture = ExtResource("2_rhvdq")
 b = 200.0
+speed = 180.0
 scale = 0.022
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
