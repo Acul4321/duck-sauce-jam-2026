@@ -6,6 +6,7 @@ class_name BuyButton
 @export var modulatePressed := Color(0.75, 0.75, 0.75, 1)
 @export var modulateDisabled := Color(0.2, 0.2, 0.2, 1)
 @export var hoverPlayer: AudioStreamPlayer
+@export var clickPlayer: AudioStreamPlayer
 
 var isPressed := false
 var isHovered := false
@@ -36,6 +37,7 @@ func _on_button_down() -> void:
 
 
 func _on_button_up() -> void:
+	clickPlayer.play()
 	isPressed = false
 	if isHovered:
 		modulate = modulateHovered
