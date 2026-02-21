@@ -2,6 +2,10 @@ extends Node2D
 
 @export var shopPopup: ShopPopup
 
+func _ready() -> void:
+	shopPopup.planet = $Pluto.planet
+	shopPopup.show()
+
 
 func _on_pluto_pressed() -> void:
 	shopPopup.planet = $Pluto.planet
