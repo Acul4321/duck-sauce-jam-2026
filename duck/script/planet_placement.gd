@@ -72,3 +72,7 @@ func show_win_screen() -> void:
 	won = true
 	var win_screen = win_screen_scene.instantiate()
 	add_child(win_screen)
+
+
+func button_mouse_entered() -> void:
+	pass # Replace with function body.

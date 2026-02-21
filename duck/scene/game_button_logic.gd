@@ -44,3 +44,11 @@ func _on_shop_button_pressed() -> void:
 
 func _on_bin_icon_pressed() -> void:
 	pass # Replace with function body.
+
+
+func button_mouse_entered() -> void:
+	pass # Replace with function body.
+
+
+func button_mouse_exited() -> void:
+	pass # Replace with function body.
