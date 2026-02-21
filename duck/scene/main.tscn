@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://ddtx0s5ipothi" path="res://script/money_label.gd" id="4_brvut"]
 [ext_resource type="Texture2D" uid="uid://nfhgx7duqrmt" path="res://asset/Main_Background.png" id="5_0ha60"]
 [ext_resource type="Texture2D" uid="uid://ey5qcja852x7" path="res://asset/sprite/Blackhole.png" id="6_4j5ol"]
+[ext_resource type="Script" uid="uid://wrqrg1lgps26" path="res://scene/game_button_logic.gd" id="6_b5f6u"]
+[ext_resource type="Texture2D" uid="uid://dtdiub2lq7mwh" path="res://asset/ShopIcon.png" id="6_of57s"]
+[ext_resource type="Texture2D" uid="uid://bw7awqid0tv1v" path="res://asset/BinIcon.png" id="7_b5f6u"]
 
 [node name="main" type="Node2D" unique_id=1284121242]
 script = ExtResource("1_v0l8b")
@@ -44,6 +47,29 @@ texture = ExtResource("2_wp4xf")
 [node name="moneyLabel" type="Label" parent="Control/HBoxContainer" unique_id=1689536789]
 layout_mode = 2
 script = ExtResource("4_brvut")
+
+[node name="menuButton" type="Control" parent="Control" unique_id=1370198667]
+anchors_preset = 0
+offset_left = 1002.1
+offset_top = -28.29
+offset_right = 1042.1007
+offset_bottom = 11.709999
+script = ExtResource("6_b5f6u")
+
+[node name="ShopButton" type="Button" parent="Control/menuButton" unique_id=1784893253]
+layout_mode = 0
+offset_right = 3436.0
+offset_bottom = 3225.0
+scale = Vector2(0.03, 0.03)
+icon = ExtResource("6_of57s")
+
+[node name="BinIcon" type="Button" parent="Control/menuButton" unique_id=1096019035]
+visible = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.03, 0.03)
+icon = ExtResource("7_b5f6u")
 
 [node name="Blackhole" type="Sprite2D" parent="." unique_id=1931768827]
 position = Vector2(2.9802322e-08, 0)
