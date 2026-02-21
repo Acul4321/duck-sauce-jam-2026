@@ -5,6 +5,7 @@ class_name PlanetButton
 @export var modulateHovered := Color(1.2, 1.2, 1.2, 1.0)
 @export var modulatePressed := Color(0.75, 0.75, 0.75, 1)
 @export var planet: PlanetClass
+@export var hoverPlayer: AudioStreamPlayer
 
 var isPressed := false
 var isHovered := false
@@ -14,8 +15,10 @@ func _ready() -> void:
 		texture_normal = planet.texture
 
 func _on_mouse_entered() -> void:
-	isHovered = true
-	if !isPressed: modulate = modulateHovered
+	if(!disabled):
+		hoverPlayer.play()
+		isHovered = true
+		if !isPressed: modulate = modulateHovered
 
 
 func _on_mouse_exited() -> void:

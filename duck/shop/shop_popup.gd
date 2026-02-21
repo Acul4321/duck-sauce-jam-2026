@@ -2,6 +2,8 @@ extends Node2D
 
 class_name ShopPopup
 
+signal close
+
 @export var planetImage: Sprite2D
 @export var planetCost: Label
 @export var planetName: Label
@@ -15,4 +17,5 @@ var planet: PlanetClass:
 
 func _process(_delta: float) -> void:
 	if(Input.is_key_pressed(KEY_ESCAPE)):
+		close.emit()
 		hide()

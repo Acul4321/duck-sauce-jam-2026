@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://s0dm78rnegtl" path="res://shop/planet_button.gd" id="2_0xhbi"]
 [ext_resource type="Texture2D" uid="uid://cchkb1gvi6wa6" path="res://shop/assets/LockedPlanetOverly.drawing.png" id="2_t4lar"]
+[ext_resource type="AudioStream" uid="uid://cmundcfgguvm" path="res://audio/shop_hover.ogg" id="3_0xhbi"]
 
-[node name="PlanetButton" type="TextureButton" unique_id=2031071410]
+[node name="PlanetButton" type="TextureButton" unique_id=2031071410 node_paths=PackedStringArray("hoverPlayer")]
 offset_right = 64.0
 offset_bottom = 64.0
 texture_normal = ExtResource("2_t4lar")
@@ -11,6 +12,12 @@ texture_disabled = ExtResource("2_t4lar")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("2_0xhbi")
+hoverPlayer = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1250619344]
+stream = ExtResource("3_0xhbi")
+volume_db = -6.592
+bus = &"Menu"
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]

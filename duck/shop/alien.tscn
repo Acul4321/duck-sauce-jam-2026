@@ -1,9 +1,43 @@
 [gd_scene format=3 uid="uid://cp5dql6rpdbm7"]
 
 [ext_resource type="Texture2D" uid="uid://dg7fb1gmpk3m" path="res://shop/assets/AlienTalkingFrame1.png" id="1_816kv"]
+[ext_resource type="Script" uid="uid://8p4lfhry6v5t" path="res://shop/alien.gd" id="1_y5nqi"]
+[ext_resource type="AudioStream" uid="uid://crwfl3d4t2cxu" path="res://audio/Alien Speak.wav" id="2_pmca2"]
+[ext_resource type="AudioStream" uid="uid://cmj8fyypskih0" path="res://audio/Alien No.wav" id="3_52huh"]
+[ext_resource type="AudioStream" uid="uid://caj4l4no77jrg" path="res://audio/Alien Buy.wav" id="4_gviwq"]
+[ext_resource type="AudioStream" uid="uid://bdkkp30xrvx2s" path="res://audio/Alien Hello.wav" id="5_pyxig"]
 
-[node name="Alien" type="Node2D" unique_id=1967499098]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pmca2"]
+random_pitch = 1.2599211
+random_volume_offset_db = 1.0
+streams_count = 3
+stream_0/stream = ExtResource("5_pyxig")
+stream_1/stream = ExtResource("2_pmca2")
+stream_2/stream = ExtResource("3_52huh")
+
+[node name="Alien" type="Node2D" unique_id=1967499098 node_paths=PackedStringArray("chatterPlayer", "chatterTimer")]
+script = ExtResource("1_y5nqi")
+sfxSpeak = ExtResource("2_pmca2")
+sfxNo = ExtResource("3_52huh")
+sfxBuy = ExtResource("4_gviwq")
+sfxHello = ExtResource("5_pyxig")
+chatterPlayer = NodePath("ChatterPlayer")
+chatterTimer = NodePath("ChatterTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=119745310]
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_816kv")
+
+[node name="ChatterPlayer" type="AudioStreamPlayer" parent="." unique_id=2073279172]
+stream = SubResource("AudioStreamRandomizer_pmca2")
+bus = &"Voice"
+
+[node name="NoPlayer" type="AudioStreamPlayer" parent="." unique_id=88694106]
+stream = ExtResource("3_52huh")
+bus = &"Voice"
+
+[node name="ChatterTimer" type="Timer" parent="." unique_id=1067506231]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ChatterTimer" to="." method="_on_chatter_timer_timeout"]
