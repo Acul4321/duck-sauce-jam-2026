@@ -9,4 +9,5 @@ texture = ExtResource("2_sw8vs")
 a = 120.0
 b = 80.0
 scale = 0.062
+reward = 250.0
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
