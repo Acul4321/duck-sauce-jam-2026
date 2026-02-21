@@ -1,7 +1,7 @@
 extends Control
 
 @onready var shop_button: Button = $ShopButton
-@onready var bin_icon: Button = $BinIcon
+@onready var bin_icon: Button = $BinButton
 @onready var shop_scene = preload("res://shop/shop.tscn")
 var shop_instance: Node2D
 
@@ -43,12 +43,17 @@ func _on_shop_button_pressed() -> void:
 
 
 func _on_bin_icon_pressed() -> void:
-	pass # Replace with function body.
+	if Planet.place_mode and Planet.current_planet:
+		# Refund the money for the selected planet
+		Money.add_money(Planet.current_planet.cost)
+		# Exit placement mode
+		Planet.place_mode = false
+		Planet.can_place = false
 
 
 func button_mouse_entered() -> void:
-	pass # Replace with function body.
+	Planet.can_place = false
 
 
 func button_mouse_exited() -> void:
-	pass # Replace with function body.
+	Planet.can_place = true
