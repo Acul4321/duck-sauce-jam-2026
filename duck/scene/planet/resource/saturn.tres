@@ -9,4 +9,5 @@ texture = ExtResource("2_qtyy6")
 a = 180.0
 b = 200.0
 scale = 0.08
+name = "Saturn"
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
