@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlanetClass" format=3 uid="uid://boei4mbxp7ycn"]
+
+[ext_resource type="Script" uid="uid://bnp05a6gwm840" path="res://scene/planet/planet_class.gd" id="1_4em6i"]
+[ext_resource type="Texture2D" uid="uid://cghgwsuwicapk" path="res://asset/sprite/planet/Neptune.png" id="2_8bhqy"]
+
+[resource]
+script = ExtResource("1_4em6i")
+texture = ExtResource("2_8bhqy")
+scale = 0.035
+metadata/_custom_type_script = "uid://bnp05a6gwm840"
