@@ -3,6 +3,7 @@ extends PathFollow2D
 @export var speed : float = 100.0
 
 var previous_progress_ratio: float = 0.0
+var money_popup_scene = preload("res://scene/money_popup.tscn")
 
 func _process(delta):
 	progress += speed * delta
@@ -15,6 +16,12 @@ func _process(delta):
 		if planet_node and "planet_resource" in planet_node:
 			var reward = planet_node.planet_resource.reward
 			Money.add_money(reward)
+			
+			# Spawn money popup at planet position
+			var popup = money_popup_scene.instantiate()
+			popup.text = "+$" + str(int(reward))
+			popup.global_position = get_node("planet").global_position
+			get_tree().root.add_child(popup)
 	
 	previous_progress_ratio = current_progress_ratio
 	
