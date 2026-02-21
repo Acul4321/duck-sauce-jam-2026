@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func _mainGame():
-	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(main))
+	get_tree().change_scene_to_packed(main)
 
 func _quitGame():
 	get_tree().quit()
