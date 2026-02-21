@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://omt51ibdp6mf"]
+
+[ext_resource type="Script" uid="uid://dagwsitkwwx76" path="res://scene/planet/planet.gd" id="1_3xo1b"]
+[ext_resource type="Script" uid="uid://g8gb0nm1r42m" path="res://scene/planet/orbit_ghost_static.gd" id="1_m60lp"]
+[ext_resource type="Script" uid="uid://soemljmfvgrk" path="res://scene/planet/orbit_movement.gd" id="2_m3og4"]
+[ext_resource type="Script" uid="uid://bpjatkbhobaod" path="res://scene/planet/orbit_create.gd" id="3_m3og4"]
+[ext_resource type="Texture2D" uid="uid://lo74ln305pfq" path="res://asset/sprite/planet/Earth.png" id="5_3xo1b"]
+
+[sub_resource type="Curve2D" id="Curve2D_6tdng"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m3og4"]
+radius = 3.3943725
+
+[node name="planet" type="Node2D" unique_id=1198807879]
+script = ExtResource("1_3xo1b")
+
+[node name="orbitGhost" type="Node2D" parent="." unique_id=694235899]
+script = ExtResource("1_m60lp")
+
+[node name="orbit" type="Path2D" parent="." unique_id=252744236]
+show_behind_parent = true
+curve = SubResource("Curve2D_6tdng")
+script = ExtResource("3_m3og4")
+
+[node name="orbitPath" type="PathFollow2D" parent="orbit" unique_id=1498181635]
+script = ExtResource("2_m3og4")
+
+[node name="planet" type="Sprite2D" parent="orbit/orbitPath" unique_id=1503329598]
+z_index = 1
+scale = Vector2(0.029, 0.029)
+texture = ExtResource("5_3xo1b")
+
+[node name="Area2D" type="Area2D" parent="orbit/orbitPath/planet" unique_id=1189718595]
+scale = Vector2(386.03445, 386.03445)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="orbit/orbitPath/planet/Area2D" unique_id=1391066728]
+shape = SubResource("CircleShape2D_m3og4")
+debug_color = Color(0.80036366, 0.40141302, 0.33861244, 0.98039216)
+
+[connection signal="area_shape_entered" from="orbit/orbitPath/planet/Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="orbit/orbitPath/planet/Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="body_entered" from="orbit/orbitPath/planet/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="orbit/orbitPath/planet/Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="child_entered_tree" from="orbit/orbitPath/planet/Area2D/CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
