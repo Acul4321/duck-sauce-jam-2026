@@ -2,10 +2,14 @@ extends Node2D
 
 class_name ShopPopup
 
+@export var planetImage: Sprite2D
+@export var planetCost: Label
+@export var planetName: Label
+
 var planet: PlanetClass:
 	set(value):
 		planet = value
-		# Set the picture and the price
+		planetImage.texture = planet.texture
 
 func _process(_delta: float) -> void:
 	if(Input.is_key_pressed(KEY_ESCAPE)):

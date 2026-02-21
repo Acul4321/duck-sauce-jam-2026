@@ -1,14 +1,25 @@
 [gd_scene format=3 uid="uid://dipyero5jxqdc"]
 
 [ext_resource type="Texture2D" uid="uid://crfwqg53ivqg8" path="res://shop/assets/Template-PopUpShop.png" id="1_se8j8"]
+[ext_resource type="Script" uid="uid://ch2x51yyamem1" path="res://shop/shop_popup.gd" id="1_toonk"]
+[ext_resource type="Texture2D" uid="uid://c20umgja8s0e6" path="res://asset/sprite/planet/Pluto.png" id="3_4bmwa"]
+[ext_resource type="Script" uid="uid://di28rfga80flq" path="res://shop/planet_image.gd" id="4_f6j5c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2q1m"]
 texture = ExtResource("1_se8j8")
 region_rect = Rect2(38.28485, 384.01917, 3332.7952, 2469.3809)
 
-[node name="ShopPopup" type="Node2D" unique_id=1535993591]
+[node name="ShopPopup" type="Node2D" unique_id=1535993591 node_paths=PackedStringArray("planetImage")]
+script = ExtResource("1_toonk")
+planetImage = NodePath("Panel/PlanetImage")
 
 [node name="Panel" type="Panel" parent="." unique_id=1178250179]
 offset_right = 400.0
 offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_x2q1m")
+
+[node name="PlanetImage" type="Sprite2D" parent="Panel" unique_id=756932927]
+position = Vector2(122, 146)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_4bmwa")
+script = ExtResource("4_f6j5c")

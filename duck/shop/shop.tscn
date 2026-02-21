@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://b1mpt4055o2uj" path="res://scene/planet/resource/pluto.tres" id="3_mrnko"]
 [ext_resource type="Resource" uid="uid://boei4mbxp7ycn" path="res://scene/planet/resource/neptune.tres" id="4_gy7ao"]
 [ext_resource type="PackedScene" uid="uid://dipyero5jxqdc" path="res://shop/shop_popup.tscn" id="5_gy7ao"]
-[ext_resource type="Script" uid="uid://ch2x51yyamem1" path="res://shop/shop_popup.gd" id="7_2wf2a"]
 
 [node name="Shop" type="Node2D" unique_id=1777051978 node_paths=PackedStringArray("shopPopup")]
 script = ExtResource("1_q4g17")
@@ -34,7 +33,6 @@ planet = ExtResource("4_gy7ao")
 [node name="ShopPopup" parent="." unique_id=1535993591 instance=ExtResource("5_gy7ao")]
 visible = false
 position = Vector2(472, 96)
-script = ExtResource("7_2wf2a")
 
 [connection signal="pressed" from="Pluto" to="." method="_on_pluto_pressed"]
 [connection signal="pressed" from="Neptune" to="." method="_on_neptune_pressed"]
