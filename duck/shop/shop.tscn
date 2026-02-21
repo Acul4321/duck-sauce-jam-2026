@@ -34,5 +34,11 @@ planet = ExtResource("4_gy7ao")
 visible = false
 position = Vector2(472, 96)
 
+[node name="PlanetButton" parent="." unique_id=1328344918 instance=ExtResource("2_sxvro")]
+offset_left = 944.0
+offset_top = 200.0
+offset_right = 1008.0
+offset_bottom = 264.0
+
 [connection signal="pressed" from="Pluto" to="." method="_on_pluto_pressed"]
 [connection signal="pressed" from="Neptune" to="." method="_on_neptune_pressed"]

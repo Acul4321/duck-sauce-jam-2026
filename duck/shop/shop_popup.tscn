@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://ch2x51yyamem1" path="res://shop/shop_popup.gd" id="1_toonk"]
 [ext_resource type="Texture2D" uid="uid://c20umgja8s0e6" path="res://asset/sprite/planet/Pluto.png" id="3_4bmwa"]
 [ext_resource type="Script" uid="uid://di28rfga80flq" path="res://shop/planet_image.gd" id="4_f6j5c"]
+[ext_resource type="Texture2D" uid="uid://bt2yen8fh6sv2" path="res://shop/assets/BuyButton.png" id="5_lfjqg"]
+[ext_resource type="Texture2D" uid="uid://c8ge0ff2ckvdx" path="res://shop/assets/BuyButton-PressedDown.png" id="6_jr8uc"]
+[ext_resource type="Script" uid="uid://b7g2grfxp1r5d" path="res://shop/buy_button.gd" id="7_jr8uc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2q1m"]
 texture = ExtResource("1_se8j8")
@@ -47,3 +50,19 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "1x"
 horizontal_alignment = 2
+
+[node name="BuyButton" type="TextureButton" parent="." unique_id=165892466]
+offset_left = 219.0
+offset_top = 50.0
+offset_right = 417.0
+offset_bottom = 243.0
+texture_normal = ExtResource("5_lfjqg")
+texture_pressed = ExtResource("6_jr8uc")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("7_jr8uc")
+
+[connection signal="button_down" from="BuyButton" to="BuyButton" method="_on_button_down"]
+[connection signal="button_up" from="BuyButton" to="BuyButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="BuyButton" to="BuyButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BuyButton" to="BuyButton" method="_on_mouse_exited"]
