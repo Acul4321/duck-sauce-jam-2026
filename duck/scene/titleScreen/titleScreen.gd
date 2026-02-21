@@ -2,8 +2,8 @@ extends Node
 
 @onready var buttons = $Buttons
 @onready var MainGame = $Buttons/MainGame
-@onready var Setting = $Buttons/Setting
 @onready var QuitGame = $Buttons/QuitGame
+@onready var main = preload("res://scene/main.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
