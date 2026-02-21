@@ -7,7 +7,9 @@
 script = ExtResource("1_eef3g")
 texture = ExtResource("2_x6yq1")
 b = 200.0
-speed = 80.0
+speed = 50.0
 scale = 0.105
 reward = 10000.0
+name = "Sun"
+cost = 99999
 metadata/_custom_type_script = "uid://bnp05a6gwm840"

@@ -10,17 +10,17 @@ var mouse_over_planet: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Load all available planets
-	planets.append(preload("res://scene/planet/resource/pluto.tres")) # 0.015
-	planets.append(preload("res://scene/planet/resource/moon.tres")) # 0.018
-	planets.append(preload("res://scene/planet/resource/mercury.tres")) # 0.022
-	planets.append(preload("res://scene/planet/resource/mars.tres")) # 0.030
-	planets.append(preload("res://scene/planet/resource/venus.tres")) # 0.038
-	planets.append(preload("res://scene/planet/resource/earth.tres")) # 0.046
-	planets.append(preload("res://scene/planet/resource/neptune.tres")) # 0.54
-	planets.append(preload("res://scene/planet/resource/uranus.tres")) # 0.062
-	planets.append(preload("res://scene/planet/resource/saturn.tres")) # 0.08
-	planets.append(preload("res://scene/planet/resource/jupiter.tres")) # 0.088
-	planets.append(preload("res://scene/planet/resource/sun.tres")) # 0.105
+	planets.append(preload("res://scene/planet/resource/pluto.tres")) # Speed 200
+	planets.append(preload("res://scene/planet/resource/moon.tres")) # Speed 190
+	planets.append(preload("res://scene/planet/resource/mercury.tres")) # Speed 180
+	planets.append(preload("res://scene/planet/resource/mars.tres")) # Speed 170
+	planets.append(preload("res://scene/planet/resource/venus.tres")) # Speed 160
+	planets.append(preload("res://scene/planet/resource/earth.tres")) # Speed 150
+	planets.append(preload("res://scene/planet/resource/neptune.tres")) # Speed 140
+	planets.append(preload("res://scene/planet/resource/uranus.tres")) # Speed 127
+	planets.append(preload("res://scene/planet/resource/saturn.tres")) # Speed 110
+	planets.append(preload("res://scene/planet/resource/jupiter.tres")) # Speed 080
+	planets.append(preload("res://scene/planet/resource/sun.tres")) # Speed 050
 	
 	# Set earth as default
 	current_planet_index = 0
