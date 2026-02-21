@@ -17,10 +17,10 @@ func _ready() -> void:
 	planets.append(preload("res://scene/planet/resource/venus.tres")) # Speed 160
 	planets.append(preload("res://scene/planet/resource/earth.tres")) # Speed 150
 	planets.append(preload("res://scene/planet/resource/neptune.tres")) # Speed 140
-	planets.append(preload("res://scene/planet/resource/uranus.tres")) # Speed 130
-	planets.append(preload("res://scene/planet/resource/saturn.tres")) # Speed 120
-	planets.append(preload("res://scene/planet/resource/jupiter.tres")) # Speed 110
-	planets.append(preload("res://scene/planet/resource/sun.tres")) # Speed 080
+	planets.append(preload("res://scene/planet/resource/uranus.tres")) # Speed 127
+	planets.append(preload("res://scene/planet/resource/saturn.tres")) # Speed 110
+	planets.append(preload("res://scene/planet/resource/jupiter.tres")) # Speed 080
+	planets.append(preload("res://scene/planet/resource/sun.tres")) # Speed 050
 	
 	# Set earth as default
 	current_planet_index = 0
