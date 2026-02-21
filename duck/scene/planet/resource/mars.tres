@@ -9,4 +9,5 @@ texture = ExtResource("2_6bi84")
 a = 180.0
 b = 250.0
 speed = 120.0
+scale = 0.03
 metadata/_custom_type_script = "uid://bnp05a6gwm840"

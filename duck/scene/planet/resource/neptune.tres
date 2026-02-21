@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_4em6i")
 texture = ExtResource("2_8bhqy")
-scale = 0.035
+scale = 0.054
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
