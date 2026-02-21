@@ -2,7 +2,6 @@ extends Node2D
 
 var planet_scene = preload("res://scene/planet/planet.tscn")
 var preview_sprite: Sprite2D
-var can_place = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,12 +20,16 @@ func _process(delta: float) -> void:
 	# Update preview position to follow mouse
 	if preview_sprite:
 		preview_sprite.global_position = get_global_mouse_position()
+		if Planet.can_place:
+			preview_sprite.modulate = Color(1, 1, 1, 0.5)
+		else:
+			preview_sprite.modulate = Color(1, 0, 0, 0.5)
 	
 	# Check if planet selection changed
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
 		update_preview()
 	
-	if Input.is_action_just_pressed("place"):
+	if Input.is_action_just_pressed("place") and Planet.can_place:
 		spawn_planet_at_mouse()
 
 
