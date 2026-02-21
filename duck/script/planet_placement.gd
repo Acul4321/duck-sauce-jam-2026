@@ -1,8 +1,10 @@
 extends Node2D
 
 var planet_scene = preload("res://scene/planet/planet.tscn")
+var win_screen_scene = preload("res://scene/win_screen.tscn")
 var preview_sprite: Sprite2D
 var last_planet: PlanetClass = null
+var won: bool = false
 @onready var orbit_ghost: Node2D = get_node("game/orbit_ghost")
 
 
@@ -19,6 +21,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# Check for win condition - if there's a Sun in orbit
+	if not won and Planet.orbiting_planets.has("Sun") and Planet.orbiting_planets["Sun"] > 0:
+		show_win_screen()
+	
 	# Update preview position to follow mouse
 	if preview_sprite:
 		preview_sprite.global_position = get_global_mouse_position()
@@ -60,3 +66,9 @@ func spawn_planet_at_mouse() -> void:
 	%game.add_child(new_planet)
 	# Exit place mode after placing
 	Planet.place_mode = false
+
+
+func show_win_screen() -> void:
+	won = true
+	var win_screen = win_screen_scene.instantiate()
+	add_child(win_screen)
