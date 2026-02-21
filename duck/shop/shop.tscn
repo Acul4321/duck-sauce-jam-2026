@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://ce4lbpt44xd00"]
+
+[ext_resource type="Texture2D" uid="uid://b34hwpwt4e78g" path="res://shop/assets/sketch1771671122369.png" id="1_r2p71"]
+[ext_resource type="Texture2D" uid="uid://c20umgja8s0e6" path="res://asset/sprite/planet/Pluto.png" id="2_sxvro"]
+[ext_resource type="Script" uid="uid://s0dm78rnegtl" path="res://shop/planet_button.gd" id="3_givde"]
+
+[node name="Shop" type="Node2D" unique_id=1777051978]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=322037206]
+position = Vector2(576.00006, 324)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_r2p71")
+
+[node name="Pluto" type="TextureButton" parent="." unique_id=1464029676]
+offset_left = 896.0
+offset_top = 312.0
+offset_right = 960.0
+offset_bottom = 376.0
+texture_normal = ExtResource("2_sxvro")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("3_givde")
+
+[connection signal="button_down" from="Pluto" to="Pluto" method="_on_button_down"]
+[connection signal="button_up" from="Pluto" to="Pluto" method="_on_button_up"]
+[connection signal="mouse_entered" from="Pluto" to="Pluto" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Pluto" to="Pluto" method="_on_mouse_exited"]
