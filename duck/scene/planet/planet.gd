@@ -24,10 +24,28 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if area.owner is Node2D and area.owner.has_method("_ready"):
-		print("Planet collision ended with: ", area.owner.name)
+	#if area.owner is Node2D and area.owner.has_method("_ready"):
+		#print("Planet collision ended with: ", area.owner.name)
+		pass
 
 
 func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.owner is Node2D and area.owner.has_method("_ready"):
 		print("Planet collision detected with: ", area.owner.name)
+		
+		# Get the two planet positions and calculate midpoint
+		var this_pos = global_position
+		var other_pos = area.owner.global_position
+		var midpoint = (this_pos + other_pos) / 2.0
+		
+		# Remove the colliding planets immediately
+		area.owner.free()
+		self.queue_free()
+		
+		# Get next planet and create it at the midpoint
+		Planet.next_planet()
+		var next_planet_resource = Planet.get_planet()
+		var new_planet = Planet._create_planet_node(next_planet_resource, midpoint)
+		
+		# Add to scene
+		get_parent().add_child(new_planet)

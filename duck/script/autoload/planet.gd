@@ -51,3 +51,37 @@ func set_planet(planet_resource: PlanetClass) -> void:
 # Get the current planet resource
 func get_planet() -> PlanetClass:
 	return current_planet
+
+
+# Helper function to create and configure a planet node
+func _create_planet_node(planet_resource: PlanetClass, position: Vector2) -> Node2D:
+	var planet_scene = preload("res://scene/planet/planet.tscn")
+	var new_planet = planet_scene.instantiate()
+	new_planet.planet_resource = planet_resource
+	new_planet.global_position = position
+	
+	# Calculate the initial rotation based on orbit direction
+	var initial_rotation = atan2(position.y, position.x)
+	
+	# Apply planet properties
+	if new_planet.has_node("orbit/orbitPath/planet"):
+		var sprite = new_planet.get_node("orbit/orbitPath/planet")
+		sprite.texture = planet_resource.texture
+		sprite.rotation = initial_rotation
+		sprite.scale = Vector2(planet_resource.scale, planet_resource.scale)
+	
+	# Set orbit dimensions and initial rotation
+	if new_planet.has_node("orbitGhost"):
+		var orbit_ghost = new_planet.get_node("orbitGhost")
+		orbit_ghost.a = planet_resource.a
+		orbit_ghost.b = planet_resource.b
+		orbit_ghost.lerped_rotation = initial_rotation
+	
+	if new_planet.has_node("orbit"):
+		var orbit = new_planet.get_node("orbit")
+		if orbit.has_node("orbitPath"):
+			orbit.get_node("orbitPath").speed = planet_resource.speed
+		orbit.a = planet_resource.a
+		orbit.b = planet_resource.b
+	
+	return new_planet
