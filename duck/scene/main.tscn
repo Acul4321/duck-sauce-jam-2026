@@ -41,14 +41,17 @@ offset_bottom = 40.0
 alignment = 1
 
 [node name="darkMatter" type="Sprite2D" parent="Control/HBoxContainer" unique_id=882336290]
+z_index = 101
 scale = Vector2(0.014804173, 0.014804174)
 texture = ExtResource("2_wp4xf")
 
 [node name="moneyLabel" type="Label" parent="Control/HBoxContainer" unique_id=1689536789]
+z_index = 101
 layout_mode = 2
 script = ExtResource("4_brvut")
 
 [node name="menuButton" type="Control" parent="Control" unique_id=1370198667]
+z_index = 101
 anchors_preset = 0
 offset_left = 1002.1
 offset_top = -28.29
@@ -75,3 +78,6 @@ icon = ExtResource("7_b5f6u")
 position = Vector2(2.9802322e-08, 0)
 scale = Vector2(0.013400486, 0.013400486)
 texture = ExtResource("6_4j5ol")
+
+[connection signal="pressed" from="Control/menuButton/ShopButton" to="Control/menuButton" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Control/menuButton/BinIcon" to="Control/menuButton" method="_on_bin_icon_pressed"]

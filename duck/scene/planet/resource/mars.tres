@@ -10,6 +10,6 @@ a = 180.0
 b = 250.0
 speed = 170.0
 scale = 0.03
-reward = 20.0
 name = "Mars"
+reward = 20.0
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
