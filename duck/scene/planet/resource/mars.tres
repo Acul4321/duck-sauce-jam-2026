@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlanetClass" format=3 uid="uid://c5w3s3uvnrbvd"]
+
+[ext_resource type="Script" uid="uid://bnp05a6gwm840" path="res://scene/planet/planet_class.gd" id="1_ch71p"]
+[ext_resource type="Texture2D" uid="uid://ceehl72pftffn" path="res://asset/sprite/planet/Mars.png" id="2_6bi84"]
+
+[resource]
+script = ExtResource("1_ch71p")
+texture = ExtResource("2_6bi84")
+a = 180.0
+b = 250.0
+speed = 120.0
+scale = 0.03
+metadata/_custom_type_script = "uid://bnp05a6gwm840"

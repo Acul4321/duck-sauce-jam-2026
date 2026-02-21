@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlanetClass" format=3 uid="uid://cw8bkhrauvs62"]
+
+[ext_resource type="Script" uid="uid://bnp05a6gwm840" path="res://scene/planet/planet_class.gd" id="1_rhvdq"]
+[ext_resource type="Texture2D" uid="uid://d3gynt1d6hfek" path="res://asset/sprite/planet/Mercury.png" id="2_rhvdq"]
+
+[resource]
+script = ExtResource("1_rhvdq")
+texture = ExtResource("2_rhvdq")
+b = 200.0
+scale = 0.022
+metadata/_custom_type_script = "uid://bnp05a6gwm840"
