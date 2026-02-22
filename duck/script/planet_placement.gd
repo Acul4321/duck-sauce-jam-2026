@@ -9,6 +9,8 @@ var won: bool = false
 @onready var blackhole: Sprite2D = get_node("Blackhole")
 @onready var game_node: Node2D = get_node("%game")
 
+var bin_button: Button
+
 # Zoom settings
 var min_zoom: float = 0.2
 var max_zoom: float = 1.0
@@ -23,7 +25,6 @@ var blackhole_offset: float = 250.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#start state
-	Money.reset_money()
 	# Reset to first planet (Pluto) at game start
 	if Planet.planets.size() > 0:
 		Planet.set_planet(Planet.planets[0])
@@ -42,6 +43,9 @@ func _ready() -> void:
 		game_node.scale = Vector2.ONE
 	if blackhole:
 		blackhole.scale = Vector2(0.013400486, 0.013400486)  # Original scale from scene
+
+	# Find the bin button in the scene tree
+	bin_button = get_tree().root.find_child("BinButton", true, false)
 
 	# Update preview with initial planet
 	update_preview()
@@ -80,6 +84,7 @@ func _process(_delta: float) -> void:
 		Planet.can_place = true
 		check_blackhole_collision()
 		check_planet_collision()
+		check_binButton_collision()
 
 		if Planet.can_place:
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
@@ -113,17 +118,33 @@ func update_preview() -> void:
 
 
 func spawn_planet_at_mouse(direction: int) -> void:
+	var current_planet = Planet.get_planet()
+	
+	# Check if player has enough money
+	if Money.get_money() < current_planet.cost:
+		print("Not enough money to place planet!")
+		Planet.place_mode = false
+		return
+	
+	# Deduct the cost
+	if not Money.spend_money(current_planet.cost):
+		print("Failed to spend money")
+		Planet.place_mode = false
+		return
+	
 	var mouse_pos = get_global_mouse_position()
 	# Convert to game node's local space
 	var local_pos = mouse_pos
 	if game_node:
 		local_pos = game_node.to_local(mouse_pos)
 
-	var current_planet = Planet.get_planet()
 	var new_planet = Planet._create_planet_node(current_planet, local_pos, 0.0, direction)
 	%game.add_child(new_planet)
-	# Exit place mode after placing
-	Planet.place_mode = false
+	
+	# Check if player still has enough money for another placement
+	if Money.get_money() < current_planet.cost:
+		print("Not enough money for another planet - exiting place mode")
+		Planet.place_mode = false
 
 
 func show_win_screen() -> void:
@@ -182,6 +203,15 @@ func check_planet_collision() -> void:
 			if distance < (preview_radius + placed_planet_radius):
 				Planet.can_place = false
 				return
+
+
+func check_binButton_collision() -> void:
+	if not bin_button:
+		return
+	
+	var mouse_pos = get_global_mouse_position()
+	if bin_button.get_global_rect().has_point(mouse_pos):
+		Planet.can_place = false
 
 
 func _input(event: InputEvent) -> void:

@@ -68,7 +68,6 @@ scale = Vector2(0.03, 0.03)
 icon = ExtResource("6_of57s")
 
 [node name="BinButton" type="Button" parent="Control/menuButton" unique_id=1096019035]
-visible = false
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
