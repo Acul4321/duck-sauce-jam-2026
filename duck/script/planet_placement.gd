@@ -5,11 +5,16 @@ var win_screen_scene = preload("res://scene/win_screen.tscn")
 var preview_sprite: Sprite2D
 var last_planet: PlanetClass = null
 var won: bool = false
+var starting_planet: PlanetClass = Planet.get_planet()
 @onready var orbit_ghost: Node2D = get_node("game/orbit_ghost")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#start state
+	Money.reset_money()
+	Planet.set_planet(starting_planet)
+	Planet.place_mode = true
 	# Create the preview sprite
 	preview_sprite = Sprite2D.new()
 	preview_sprite.modulate = Color(1, 1, 1, 0.5)  # 50% transparent
