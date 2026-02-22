@@ -8,6 +8,7 @@ var won: bool = false
 @onready var orbit_ghost: Node2D = get_node("game/orbit_ghost")
 @onready var blackhole: Sprite2D = get_node("Blackhole")
 @onready var game_node: Node2D = get_node("%game")
+@onready var placeFX: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var bin_button: Button
 
@@ -144,6 +145,7 @@ func spawn_planet_at_mouse(direction: int) -> void:
 
 	var new_planet = Planet._create_planet_node(current_planet, local_pos, 0.0, direction)
 	%game.add_child(new_planet)
+	placeFX.play()
 	
 	# Check if player still has enough money for another placement
 	if Money.get_money() < current_planet.cost:
