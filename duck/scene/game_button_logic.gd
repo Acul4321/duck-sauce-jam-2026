@@ -4,7 +4,7 @@ extends Control
 @onready var bin_icon: Button = $BinButton
 @onready var shop_scene = preload("res://shop/shop.tscn")
 var shop_instance: Node2D
-
+@onready var musicManager = %MusicManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,6 +38,7 @@ func _on_shop_button_pressed() -> void:
 	if shop_instance.has_node("Background"):
 		var bg = shop_instance.get_node("Background")
 		shop_instance.position = viewport_center - bg.position
+		musicManager.toggle()
 	else:
 		shop_instance.position = viewport_center
 
