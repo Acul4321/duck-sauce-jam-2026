@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://bexync6v5m53c" path="res://script/planet_placement.gd" id="1_v0l8b"]
 [ext_resource type="Script" uid="uid://ddepf6gmso515" path="res://script/orbit_ghost_adaptive.gd" id="2_v0l8b"]
 [ext_resource type="Texture2D" uid="uid://cbrqaleph6iqe" path="res://asset/sprite/DarkMatter.png" id="2_wp4xf"]
-[ext_resource type="Script" uid="uid://ddtx0s5ipothi" path="res://script/money_label.gd" id="4_brvut"]
+[ext_resource type="PackedScene" uid="uid://dmrci6utnri3d" path="res://scene/music_manager.tscn" id="3_wp4xf"]
+[ext_resource type="Script" path="res://script/money_label.gd" id="4_brvut"]
 [ext_resource type="Texture2D" uid="uid://nfhgx7duqrmt" path="res://asset/Main_Background.png" id="5_0ha60"]
 [ext_resource type="Texture2D" uid="uid://ey5qcja852x7" path="res://asset/sprite/Blackhole.png" id="6_4j5ol"]
 [ext_resource type="Script" uid="uid://wrqrg1lgps26" path="res://scene/game_button_logic.gd" id="6_b5f6u"]
 [ext_resource type="Texture2D" uid="uid://dtdiub2lq7mwh" path="res://asset/ShopIcon.png" id="6_of57s"]
 [ext_resource type="Texture2D" uid="uid://bw7awqid0tv1v" path="res://asset/BinIcon.png" id="7_b5f6u"]
-[ext_resource type="PackedScene" uid="uid://dmrci6utnri3d" path="res://scene/music_manager.tscn" id="3_wp4xf"]
 
 [node name="main" type="Node2D" unique_id=1284121242]
 script = ExtResource("1_v0l8b")
@@ -79,10 +79,11 @@ position = Vector2(2.9802322e-08, 0)
 scale = Vector2(0.013400486, 0.013400486)
 texture = ExtResource("6_4j5ol")
 
+[node name="MusicManager" parent="." unique_id=528675931 instance=ExtResource("3_wp4xf")]
+
 [connection signal="mouse_entered" from="Control/menuButton/ShopButton" to="Control/menuButton" method="button_mouse_entered"]
 [connection signal="mouse_exited" from="Control/menuButton/ShopButton" to="Control/menuButton" method="button_mouse_exited"]
 [connection signal="pressed" from="Control/menuButton/ShopButton" to="Control/menuButton" method="_on_shop_button_pressed"]
 [connection signal="mouse_entered" from="Control/menuButton/BinButton" to="Control/menuButton" method="button_mouse_entered"]
 [connection signal="mouse_exited" from="Control/menuButton/BinButton" to="Control/menuButton" method="button_mouse_exited"]
 [connection signal="pressed" from="Control/menuButton/BinButton" to="Control/menuButton" method="_on_bin_icon_pressed"]
-[node name="MusicManager" parent="." unique_id=528675931 instance=ExtResource("3_wp4xf")]

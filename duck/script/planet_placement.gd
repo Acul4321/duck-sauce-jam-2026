@@ -7,6 +7,7 @@ var last_planet: PlanetClass = null
 var won: bool = false
 var starting_planet: PlanetClass = Planet.get_planet()
 @onready var orbit_ghost: Node2D = get_node("game/orbit_ghost")
+@onready var blackhole: Sprite2D = get_node("Blackhole")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +37,13 @@ func _process(_delta: float) -> void:
 		preview_sprite.visible = Planet.place_mode
 		if orbit_ghost:
 			orbit_ghost.visible = Planet.place_mode
+		
+		# Check collision with black hole and other planets
+		# Start by assuming we can place, then check all collisions
+		Planet.can_place = true
+		check_blackhole_collision()
+		check_planet_collision()
+		
 		if Planet.can_place:
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
 		else:
@@ -77,6 +85,58 @@ func show_win_screen() -> void:
 	won = true
 	var win_screen = win_screen_scene.instantiate()
 	add_child(win_screen)
+
+
+func check_blackhole_collision() -> void:
+	if not blackhole or not preview_sprite:
+		return
+	
+	var mouse_pos = get_global_mouse_position()
+	var blackhole_pos = blackhole.global_position
+	
+	# Calculate radii
+	var current_planet = Planet.get_planet()
+	var planet_radius = (current_planet.texture.get_width() / 2.0) * current_planet.scale
+	var blackhole_radius = (blackhole.texture.get_width() / 2.0) * blackhole.scale.x
+	
+	# Calculate distance between centers
+	var distance = mouse_pos.distance_to(blackhole_pos)
+	
+	# Check if radii are overlapping
+	if distance < (planet_radius + blackhole_radius):
+		Planet.can_place = false
+
+
+func check_planet_collision() -> void:
+	if not preview_sprite:
+		return
+	
+	var mouse_pos = get_global_mouse_position()
+	var current_planet = Planet.get_planet()
+	var preview_radius = (current_planet.texture.get_width() / 2.0) * current_planet.scale
+	
+	# Get all placed planets from the game node
+	var game_node = get_node("%game")
+	for child in game_node.get_children():
+		# Check if this is a planet node (has planet_resource property)
+		if child.has_method("get") and child.get("planet_resource") != null:
+			var placed_planet_resource = child.planet_resource
+			
+			# Get the planet sprite position from the PathFollow2D node
+			var planet_sprite_pos = child.global_position  # Default to base position
+			if child.has_node("orbit/orbitPath/planet"):
+				planet_sprite_pos = child.get_node("orbit/orbitPath/planet").global_position
+			
+			# Calculate the placed planet's radius
+			var placed_planet_radius = (placed_planet_resource.texture.get_width() / 2.0) * placed_planet_resource.scale
+			
+			# Calculate distance between centers
+			var distance = mouse_pos.distance_to(planet_sprite_pos)
+			
+			# Check if radii are overlapping
+			if distance < (preview_radius + placed_planet_radius):
+				Planet.can_place = false
+				return
 
 
 func button_mouse_entered() -> void:
