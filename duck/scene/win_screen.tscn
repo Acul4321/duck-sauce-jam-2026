@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5x7vn2kgmxq1"]
 
-[ext_resource type="Script" path="res://scene/win_screen.gd" id="1_win"]
+[ext_resource type="Script" uid="uid://nky3qeg6bhxr" path="res://scene/win_screen.gd" id="1_win"]
 
 [node name="WinScreen" type="CanvasLayer" unique_id=1288198057]
 layer = 200
@@ -58,3 +58,4 @@ theme_override_font_sizes/font_size = 32
 text = "Resume"
 
 [connection signal="pressed" from="Panel/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Panel/resumeButton" to="." method="_on_resume_button_pressed"]

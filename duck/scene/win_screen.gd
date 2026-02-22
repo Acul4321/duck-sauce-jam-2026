@@ -10,3 +10,8 @@ func _ready() -> void:
 func _on_menu_button_pressed() -> void:
 	print("Menu button pressed, returning to title screen")
 	get_tree().change_scene_to_file("res://scene/titleScreen/titleScreen.tscn")
+
+
+func _on_resume_button_pressed() -> void:
+	print("Resume button pressed, closing win screen")
+	queue_free()
