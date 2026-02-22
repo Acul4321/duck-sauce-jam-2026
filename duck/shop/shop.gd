@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	# Check and update each planet button's enabled/disabled state
 	_update_button_state($Pluto)
 	_update_button_state($Neptune)
-	_update_button_state($Jupiter)
+	#_update_button_state($Jupiter)
 	_update_button_state($Earth)
 	_update_button_state($Mercury)
 	_update_button_state($Mars)
