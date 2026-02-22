@@ -25,7 +25,6 @@ var blackhole_offset: float = 250.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#start state
-	Money.reset_money()
 	# Reset to first planet (Pluto) at game start
 	if Planet.planets.size() > 0:
 		Planet.set_planet(Planet.planets[0])
@@ -119,17 +118,33 @@ func update_preview() -> void:
 
 
 func spawn_planet_at_mouse(direction: int) -> void:
+	var current_planet = Planet.get_planet()
+	
+	# Check if player has enough money
+	if Money.get_money() < current_planet.cost:
+		print("Not enough money to place planet!")
+		Planet.place_mode = false
+		return
+	
+	# Deduct the cost
+	if not Money.spend_money(current_planet.cost):
+		print("Failed to spend money")
+		Planet.place_mode = false
+		return
+	
 	var mouse_pos = get_global_mouse_position()
 	# Convert to game node's local space
 	var local_pos = mouse_pos
 	if game_node:
 		local_pos = game_node.to_local(mouse_pos)
 
-	var current_planet = Planet.get_planet()
 	var new_planet = Planet._create_planet_node(current_planet, local_pos, 0.0, direction)
 	%game.add_child(new_planet)
-	# Exit place mode after placing
-	Planet.place_mode = false
+	
+	# Check if player still has enough money for another placement
+	if Money.get_money() < current_planet.cost:
+		print("Not enough money for another planet - exiting place mode")
+		Planet.place_mode = false
 
 
 func show_win_screen() -> void:

@@ -44,10 +44,8 @@ func _on_shop_button_pressed() -> void:
 
 func _on_bin_icon_pressed() -> void:
 	print("Bin icon pressed - exiting placement mode")
-	if Planet.place_mode and Planet.current_planet:
-		# Refund the money for the selected planet
-		Money.add_money(Planet.current_planet.cost)
-		# Exit placement mode
+	if Planet.place_mode:
+		# Exit placement mode (no refund needed since money isn't taken upfront)
 		Planet.place_mode = false
 		Planet.can_place = false
 
