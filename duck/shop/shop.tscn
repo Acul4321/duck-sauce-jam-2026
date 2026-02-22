@@ -67,70 +67,70 @@ offset_bottom = 324.0
 planet = ExtResource("3_mrnko")
 
 [node name="Neptune" parent="." unique_id=1240407968 instance=ExtResource("2_sxvro")]
-offset_left = 653.0
-offset_top = 237.0
-offset_right = 741.0
-offset_bottom = 317.0
+offset_left = 660.0
+offset_top = 238.0
+offset_right = 732.0
+offset_bottom = 303.0
 planet = ExtResource("4_gy7ao")
 
 [node name="Jupiter" parent="." unique_id=1328344918 instance=ExtResource("2_sxvro")]
-offset_left = 958.0
-offset_top = 296.0
-offset_right = 1053.0
-offset_bottom = 387.0
+offset_left = 955.0
+offset_top = 294.0
+offset_right = 1057.0
+offset_bottom = 391.0
 planet = ExtResource("7_2wf2a")
 
 [node name="Earth" parent="." unique_id=1428499251 instance=ExtResource("2_sxvro")]
 offset_left = 795.0
-offset_top = 296.0
+offset_top = 297.0
 offset_right = 857.0
-offset_bottom = 356.0
+offset_bottom = 357.0
 planet = ExtResource("8_xad5q")
 
 [node name="Mercury" parent="." unique_id=2049855629 instance=ExtResource("2_sxvro")]
-offset_left = 831.0
-offset_top = 148.0
-offset_right = 895.0
-offset_bottom = 212.0
+offset_left = 848.0
+offset_top = 153.0
+offset_right = 880.0
+offset_bottom = 184.0
 disabled = true
 planet = ExtResource("9_yrv44")
 
 [node name="Mars" parent="." unique_id=1981060386 instance=ExtResource("2_sxvro")]
-offset_left = 943.0
-offset_top = 203.0
+offset_left = 945.0
+offset_top = 204.0
 offset_right = 991.0
-offset_bottom = 258.0
+offset_bottom = 246.0
 disabled = true
 planet = ExtResource("10_pafut")
 
 [node name="Venus" parent="." unique_id=1200790081 instance=ExtResource("2_sxvro")]
-offset_left = 920.0
+offset_left = 919.0
 offset_top = 344.0
-offset_right = 970.0
-offset_bottom = 399.0
+offset_right = 971.0
+offset_bottom = 397.0
 disabled = true
 planet = ExtResource("11_hv745")
 
 [node name="Uranus" parent="." unique_id=1728025554 instance=ExtResource("2_sxvro")]
-offset_left = 719.0
-offset_top = 162.0
-offset_right = 783.0
-offset_bottom = 226.0
+offset_left = 711.0
+offset_top = 160.0
+offset_right = 791.0
+offset_bottom = 234.0
 disabled = true
 planet = ExtResource("12_c8ks2")
 
 [node name="Saturn" parent="." unique_id=770888722 instance=ExtResource("2_sxvro")]
-offset_left = 1013.0
-offset_top = 189.0
-offset_right = 1077.0
-offset_bottom = 253.0
+offset_left = 1004.0
+offset_top = 188.0
+offset_right = 1087.0
+offset_bottom = 264.0
 planet = ExtResource("13_k6x22")
 
 [node name="Moon" parent="." unique_id=735132464 instance=ExtResource("2_sxvro")]
-offset_left = 784.0
-offset_top = 250.0
-offset_right = 821.0
-offset_bottom = 286.0
+offset_left = 790.0
+offset_top = 252.0
+offset_right = 818.0
+offset_bottom = 279.0
 planet = ExtResource("9_ljlg5")
 
 [node name="ShopPopup" parent="." unique_id=1535993591 instance=ExtResource("5_gy7ao")]
