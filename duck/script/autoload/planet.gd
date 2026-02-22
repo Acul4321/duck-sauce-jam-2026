@@ -28,17 +28,9 @@ func _ready() -> void:
 	planets.append(preload("res://scene/planet/resource/jupiter.tres")) # Speed 080
 	planets.append(preload("res://scene/planet/resource/sun.tres")) # Speed 050
 	
-	# Set earth as default
+	# Set pluto as default
 	current_planet_index = 0
 	current_planet = planets[current_planet_index]
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_left"):
-		previous_planet()
-	elif Input.is_action_just_pressed("ui_right"):
-		next_planet()
 
 
 # Switch to next planet
