@@ -21,6 +21,10 @@ var current_zoom: float = 0.5
 # Blackhole collision offset (additional safe zone around blackhole)
 var blackhole_offset: float = 250.0
 
+# Mobile zoom settings
+var touch_points: Dictionary = {}
+var last_pinch_distance: float = 0.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -215,6 +219,7 @@ func check_binButton_collision() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	# Mouse wheel zoom (desktop)
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			# Zoom in
@@ -226,6 +231,32 @@ func _input(event: InputEvent) -> void:
 			var new_zoom = target_zoom - zoom_speed
 			if new_zoom >= min_zoom:
 				target_zoom = new_zoom
+	
+	# Touch zoom (mobile)
+	elif event is InputEventScreenTouch:
+		if event.pressed:
+			touch_points[event.index] = event.position
+		else:
+			touch_points.erase(event.index)
+			last_pinch_distance = 0.0
+	
+	elif event is InputEventScreenDrag:
+		touch_points[event.index] = event.position
+		
+		# Pinch to zoom with two fingers
+		if touch_points.size() == 2:
+			var touch_indices = touch_points.keys()
+			var distance = touch_points[touch_indices[0]].distance_to(touch_points[touch_indices[1]])
+			
+			if last_pinch_distance > 0:
+				var distance_change = distance - last_pinch_distance
+				# Adjust zoom based on pinch
+				var zoom_change = distance_change * 0.001  # Sensitivity factor
+				var new_zoom = target_zoom + zoom_change
+				new_zoom = clamp(new_zoom, min_zoom, max_zoom)
+				target_zoom = new_zoom
+			
+			last_pinch_distance = distance
 
 
 func button_mouse_entered() -> void:
