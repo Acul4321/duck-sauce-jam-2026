@@ -77,9 +77,8 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 		area.owner.free()
 		self.queue_free()
 		
-		# Get next planet and create it at the midpoint
-		Planet.next_planet()
-		var next_planet_resource = Planet.get_planet()
+		# Get next tier planet without modifying the global current planet
+		var next_planet_resource = Planet.get_next_tier_planet(planet_resource)
 		var new_planet = Planet._create_planet_node(next_planet_resource, midpoint, avg_progress)
 		
 		# Add to scene

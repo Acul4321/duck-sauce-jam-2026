@@ -68,6 +68,14 @@ func get_planet_index(planet_resource: PlanetClass) -> int:
 	return planets.find(planet_resource)
 
 
+# Get the next tier planet (one tier up) without modifying current_planet
+func get_next_tier_planet(planet_resource: PlanetClass) -> PlanetClass:
+	var planet_index = get_planet_index(planet_resource)
+	if planet_index >= 0 and planet_index < planets.size() - 1:
+		return planets[planet_index + 1]
+	return planet_resource  # Return same if already max tier
+
+
 # Add a planet to the orbiting count
 func add_orbiting_planet(planet_resource: PlanetClass) -> void:
 	var planet_name = planet_resource.name
