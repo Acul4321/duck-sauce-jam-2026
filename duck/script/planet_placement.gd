@@ -5,7 +5,6 @@ var win_screen_scene = preload("res://scene/win_screen.tscn")
 var preview_sprite: Sprite2D
 var last_planet: PlanetClass = null
 var won: bool = false
-var starting_planet: PlanetClass = Planet.get_planet()
 @onready var orbit_ghost: Node2D = get_node("game/orbit_ghost")
 @onready var blackhole: Sprite2D = get_node("Blackhole")
 @onready var game_node: Node2D = get_node("%game")
@@ -25,7 +24,13 @@ var blackhole_offset: float = 250.0
 func _ready() -> void:
 	#start state
 	Money.reset_money()
-	Planet.set_planet(starting_planet)
+	# Reset to first planet (Pluto) at game start
+	if Planet.planets.size() > 0:
+		Planet.set_planet(Planet.planets[0])
+		Planet.last_shop_planet = Planet.planets[0]  # Reset shop selection too
+	# Reset unlocked planets and orbiting counts for new game
+	Planet.unlocked_planets.clear()
+	Planet.orbiting_planets.clear()
 	Planet.place_mode = true
 	# Create the preview sprite
 	preview_sprite = Sprite2D.new()

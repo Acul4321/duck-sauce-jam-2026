@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	_update_button_state($Uranus)
 	_update_button_state($Saturn)
 	_update_button_state($Moon)
-	# _update_button_state($Sun)
+	_update_button_state($Sun)
 
 
 func _update_button_state(button: PlanetButton) -> void:
@@ -61,10 +61,10 @@ func _update_button_state(button: PlanetButton) -> void:
 				button.disabled = false
 			else:
 				button.disabled = true
-		# elif Planet.get_highest_orbiting_planet_tier() == Planet.planets.size() - 1:
-		# 	# Last tier planet is always available
-		# 	Planet.unlocked_planets[planet_name] = true
-		# 	button.disabled = false
+		elif Planet.get_highest_orbiting_planet_tier() == Planet.planets.size() - 1:
+			# Last tier planet is always available
+			Planet.unlocked_planets[planet_name] = true
+			button.disabled = false
 		else:
 			# No higher tier, so just check if this one is unlocked
 			button.disabled = true
