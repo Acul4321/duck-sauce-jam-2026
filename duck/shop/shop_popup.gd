@@ -21,11 +21,9 @@ func _ready() -> void:
 		buyButton.buy_pressed.connect(_on_buy_pressed)
 
 func _on_buy_pressed() -> void:
-	# Check if player has enough money
+	# Check if player has enough money to place at least one
 	if Money.get_money() >= planet.cost:
-		# Deduct the cost
-		Money.spend_money(planet.cost)
-		# Set the planet to place
+		# Set the planet to place (money will be deducted on placement)
 		Planet.set_planet(planet)
 		# Enter place mode
 		Planet.place_mode = true
