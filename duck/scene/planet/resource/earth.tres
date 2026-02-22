@@ -12,4 +12,5 @@ speed = 150.0
 scale = 0.046
 name = "Earth"
 cost = 50
+reward = 50.0
 metadata/_custom_type_script = "uid://bnp05a6gwm840"

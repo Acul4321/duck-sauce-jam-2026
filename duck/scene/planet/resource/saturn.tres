@@ -11,4 +11,5 @@ b = 200.0
 speed = 110.0
 scale = 0.08
 name = "Saturn"
+reward = 500.0
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
