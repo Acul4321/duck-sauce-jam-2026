@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_rhvdq")
 texture = ExtResource("2_rhvdq")
-b = 200.0
+b = 100.0
 speed = 180.0
 scale = 0.022
 name = "Mercury"
-cost = 100
-reward = 10.0
+cost = 10
+reward = 3
 metadata/_custom_type_script = "uid://bnp05a6gwm840"

@@ -6,10 +6,11 @@
 [resource]
 script = ExtResource("1_bwufo")
 texture = ExtResource("2_bwufo")
-a = 120.0
+a = 160.0
 b = 80.0
 speed = 160.0
 scale = 0.038
 name = "Venus"
-reward = 40.0
+cost = 40
+reward = 8
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
