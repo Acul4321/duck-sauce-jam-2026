@@ -9,6 +9,8 @@ var won: bool = false
 @onready var blackhole: Sprite2D = get_node("Blackhole")
 @onready var game_node: Node2D = get_node("%game")
 
+var bin_button: Button
+
 # Zoom settings
 var min_zoom: float = 0.2
 var max_zoom: float = 1.0
@@ -42,6 +44,9 @@ func _ready() -> void:
 		game_node.scale = Vector2.ONE
 	if blackhole:
 		blackhole.scale = Vector2(0.013400486, 0.013400486)  # Original scale from scene
+
+	# Find the bin button in the scene tree
+	bin_button = get_tree().root.find_child("BinButton", true, false)
 
 	# Update preview with initial planet
 	update_preview()
@@ -80,6 +85,7 @@ func _process(_delta: float) -> void:
 		Planet.can_place = true
 		check_blackhole_collision()
 		check_planet_collision()
+		check_binButton_collision()
 
 		if Planet.can_place:
 			preview_sprite.modulate = Color(1, 1, 1, 0.5)
@@ -182,6 +188,15 @@ func check_planet_collision() -> void:
 			if distance < (preview_radius + placed_planet_radius):
 				Planet.can_place = false
 				return
+
+
+func check_binButton_collision() -> void:
+	if not bin_button:
+		return
+	
+	var mouse_pos = get_global_mouse_position()
+	if bin_button.get_global_rect().has_point(mouse_pos):
+		Planet.can_place = false
 
 
 func _input(event: InputEvent) -> void:
