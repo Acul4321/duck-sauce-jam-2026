@@ -38,5 +38,9 @@ func _close_shop() -> void:
 		shop.queue_free()
 
 func _process(_delta: float) -> void:
+	# Update buy button state based on available money
+	if buyButton and planet:
+		buyButton.disabled = Money.get_money() < planet.cost
+	
 	if(Input.is_key_pressed(KEY_ESCAPE)):
 		_close_shop()

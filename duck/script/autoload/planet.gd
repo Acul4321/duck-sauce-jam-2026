@@ -103,6 +103,20 @@ func get_total_planet_count() -> int:
 	return total
 
 
+# Get the highest tier planet index currently orbiting
+# Returns the index in the planets array, or -1 if no planets are orbiting
+func get_highest_orbiting_planet_tier() -> int:
+	var highest_tier = -1
+	for planet_name in orbiting_planets.keys():
+		if orbiting_planets[planet_name] > 0:
+			# Find this planet in the planets array
+			for i in range(planets.size()):
+				if planets[i].name == planet_name:
+					highest_tier = max(highest_tier, i)
+					break
+	return highest_tier
+
+
 # Helper function to create and configure a planet node
 func _create_planet_node(planet_resource: PlanetClass, position: Vector2, progress: float = 0.0) -> Node2D:
 	var planet_scene = preload("res://scene/planet/planet.tscn")
