@@ -70,9 +70,9 @@ func create_instantiation_marker() -> void:
 	circle.polygon = points
 	circle.color = Color(1, 0.8, 0, 0.8)  # Yellow/orange semi-transparent
 	
-	# Get the planet's current position relative to this Path2D
-	var planet_pos = get_parent().position  # Use local position instead of global
-	marker.position = planet_pos
+	# The marker should be at (0, 0) because the orbit curve is offset so the planet starts at origin
+	# Since the curve points are calculated as (rotated - planet_pos), the starting point on the path is at (0, 0)
+	marker.position = Vector2.ZERO
 	
 	marker.add_child(circle)
 	orbit_line.add_child(marker)
