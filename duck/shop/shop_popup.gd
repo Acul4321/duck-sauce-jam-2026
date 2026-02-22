@@ -2,6 +2,8 @@ extends Node2D
 
 class_name ShopPopup
 
+signal close
+
 @export var planetImage: Sprite2D
 @export var planetCost: Label
 @export var planetName: Label

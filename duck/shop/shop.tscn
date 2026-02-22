@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://crl6epw26753r" path="res://shop/shop.gd" id="1_q4g17"]
 [ext_resource type="Texture2D" uid="uid://73faye843tnd" path="res://shop/assets/ShopBackground.png" id="2_pafut"]
+[ext_resource type="AudioStream" uid="uid://b6u56f4moii6h" path="res://audio/shop_open.ogg" id="2_sigkv"]
 [ext_resource type="PackedScene" uid="uid://bq8635ma6esi2" path="res://shop/planet_button.tscn" id="2_sxvro"]
 [ext_resource type="Texture2D" uid="uid://bse7gfit6p5qy" path="res://shop/assets/ShopCounter.png" id="3_hv745"]
 [ext_resource type="Texture2D" uid="uid://d0h82kgij37ls" path="res://shop/assets/PlanetSelectionFrame.png" id="3_k6x22"]
 [ext_resource type="Resource" uid="uid://b1mpt4055o2uj" path="res://scene/planet/resource/pluto.tres" id="3_mrnko"]
+[ext_resource type="AudioStream" uid="uid://rxtuuen501uk" path="res://audio/shop_close.ogg" id="3_wobyc"]
 [ext_resource type="Texture2D" uid="uid://bdd0sa812ffux" path="res://shop/assets/ShopSign.png" id="4_c8ks2"]
 [ext_resource type="Resource" uid="uid://boei4mbxp7ycn" path="res://scene/planet/resource/neptune.tres" id="4_gy7ao"]
 [ext_resource type="PackedScene" uid="uid://dipyero5jxqdc" path="res://shop/shop_popup.tscn" id="5_gy7ao"]
-[ext_resource type="PackedScene" uid="uid://cp5dql6rpdbm7" path="res://alien.tscn" id="5_mtsdc"]
+[ext_resource type="PackedScene" uid="uid://cp5dql6rpdbm7" path="res://shop/alien.tscn" id="5_mtsdc"]
 [ext_resource type="Resource" uid="uid://cd48srt3mju2g" path="res://scene/planet/resource/jupiter.tres" id="7_2wf2a"]
 [ext_resource type="Resource" uid="uid://dtwwd3wedory6" path="res://scene/planet/resource/earth.tres" id="8_xad5q"]
 [ext_resource type="Resource" uid="uid://f151hj27vfim" path="res://scene/planet/resource/moon.tres" id="9_ljlg5"]
@@ -20,9 +22,12 @@
 [ext_resource type="Resource" uid="uid://bw330ajtnjukp" path="res://scene/planet/resource/saturn.tres" id="13_k6x22"]
 [ext_resource type="Resource" uid="uid://cpv646x786p37" path="res://scene/planet/resource/sun.tres" id="14_pafut"]
 
-[node name="Shop" type="Node2D" unique_id=1777051978 node_paths=PackedStringArray("shopPopup")]
+[node name="Shop" type="Node2D" unique_id=1777051978 node_paths=PackedStringArray("shopPopup", "menuPlayer")]
 script = ExtResource("1_q4g17")
 shopPopup = NodePath("ShopPopup")
+menuPlayer = NodePath("MenuPlayer")
+sfxOpenPopup = ExtResource("2_sigkv")
+sfxClosePopup = ExtResource("3_wobyc")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=322037206]
 position = Vector2(576.00006, 324)
@@ -137,6 +142,9 @@ planet = ExtResource("14_pafut")
 [node name="ShopPopup" parent="." unique_id=1535993591 instance=ExtResource("5_gy7ao")]
 position = Vector2(250, 138)
 
+[node name="MenuPlayer" type="AudioStreamPlayer" parent="." unique_id=31928646]
+bus = &"Menu"
+
 [connection signal="pressed" from="Pluto" to="." method="_on_pluto_pressed"]
 [connection signal="pressed" from="Neptune" to="." method="_on_neptune_pressed"]
 [connection signal="pressed" from="Jupiter" to="." method="_on_jupiter_pressed"]
@@ -148,3 +156,4 @@ position = Vector2(250, 138)
 [connection signal="pressed" from="Saturn" to="." method="_on_saturn_pressed"]
 [connection signal="pressed" from="Moon" to="." method="_on_moon_pressed"]
 [connection signal="pressed" from="Sun" to="." method="_on_sun_pressed"]
+[connection signal="close" from="ShopPopup" to="." method="_on_shop_popup_close"]

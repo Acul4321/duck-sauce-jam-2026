@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://wrqrg1lgps26" path="res://scene/game_button_logic.gd" id="6_b5f6u"]
 [ext_resource type="Texture2D" uid="uid://dtdiub2lq7mwh" path="res://asset/ShopIcon.png" id="6_of57s"]
 [ext_resource type="Texture2D" uid="uid://bw7awqid0tv1v" path="res://asset/BinIcon.png" id="7_b5f6u"]
+[ext_resource type="PackedScene" uid="uid://dmrci6utnri3d" path="res://scene/music_manager.tscn" id="3_wp4xf"]
 
 [node name="main" type="Node2D" unique_id=1284121242]
 script = ExtResource("1_v0l8b")
@@ -84,3 +85,4 @@ texture = ExtResource("6_4j5ol")
 [connection signal="mouse_entered" from="Control/menuButton/BinButton" to="Control/menuButton" method="button_mouse_entered"]
 [connection signal="mouse_exited" from="Control/menuButton/BinButton" to="Control/menuButton" method="button_mouse_exited"]
 [connection signal="pressed" from="Control/menuButton/BinButton" to="Control/menuButton" method="_on_bin_icon_pressed"]
+[node name="MusicManager" parent="." unique_id=528675931 instance=ExtResource("3_wp4xf")]

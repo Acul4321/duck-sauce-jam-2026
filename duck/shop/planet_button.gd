@@ -6,6 +6,7 @@ class_name PlanetButton
 @export var modulatePressed := Color(0.75, 0.75, 0.75, 1)
 @export var modulateDisabled := Color(0.2, 0.2, 0.2, 1)
 @export var planet: PlanetClass
+@export var hoverPlayer: AudioStreamPlayer
 
 var isPressed := false
 var isHovered := false
@@ -22,8 +23,10 @@ func _process(delta: float) -> void:
 		modulate = Color(1,1,1,1)
 
 func _on_mouse_entered() -> void:
-	isHovered = true
-	if !isPressed: modulate = modulateHovered
+	if(!disabled):
+		hoverPlayer.play()
+		isHovered = true
+		if !isPressed: modulate = modulateHovered
 
 
 func _on_mouse_exited() -> void:
