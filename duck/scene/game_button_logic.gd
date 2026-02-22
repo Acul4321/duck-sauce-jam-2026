@@ -16,10 +16,10 @@ func _process(delta: float) -> void:
 	# Toggle button visibility based on place_mode
 	if Planet.place_mode:
 		shop_button.visible = false
-		bin_icon.visible = true
+		#bin_icon.visible = true
 	else:
 		shop_button.visible = true
-		bin_icon.visible = false
+		#bin_icon.visible = false
 
 
 func _on_shop_button_pressed() -> void:
@@ -46,6 +46,8 @@ func _on_bin_icon_pressed() -> void:
 	if Planet.place_mode and Planet.current_planet:
 		# Refund the money for the selected planet
 		Money.add_money(Planet.current_planet.cost)
+		# Clear the selected planet
+		Planet.current_planet = null
 		# Exit placement mode
 		Planet.place_mode = false
 		Planet.can_place = false
