@@ -16,6 +16,9 @@ func _process(_delta: float) -> void:
 
 func _draw():
 	var mouse_pos = get_global_mouse_position()
+	# Convert to this node's local space to account for parent scaling
+	mouse_pos = to_local(mouse_pos)
+	
 	var angle_to_mouse = atan2(mouse_pos.y, mouse_pos.x)
 	var distance_to_origin = mouse_pos.length()
 	

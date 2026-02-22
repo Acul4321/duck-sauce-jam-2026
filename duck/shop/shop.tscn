@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bdd0sa812ffux" path="res://shop/assets/ShopSign.png" id="4_c8ks2"]
 [ext_resource type="Resource" uid="uid://boei4mbxp7ycn" path="res://scene/planet/resource/neptune.tres" id="4_gy7ao"]
 [ext_resource type="PackedScene" uid="uid://dipyero5jxqdc" path="res://shop/shop_popup.tscn" id="5_gy7ao"]
-[ext_resource type="PackedScene" uid="uid://cp5dql6rpdbm7" path="res://shop/alien.tscn" id="5_mtsdc"]
+[ext_resource type="PackedScene" path="res://shop/alien.tscn" id="5_mtsdc"]
 [ext_resource type="Resource" uid="uid://cd48srt3mju2g" path="res://scene/planet/resource/jupiter.tres" id="7_2wf2a"]
 [ext_resource type="Resource" uid="uid://dtwwd3wedory6" path="res://scene/planet/resource/earth.tres" id="8_xad5q"]
 [ext_resource type="Resource" uid="uid://f151hj27vfim" path="res://scene/planet/resource/moon.tres" id="9_ljlg5"]
@@ -72,7 +72,6 @@ offset_left = 992.80005
 offset_top = 160.70004
 offset_right = 1104.8
 offset_bottom = 264.70004
-disabled = true
 planet = ExtResource("7_2wf2a")
 
 [node name="Earth" parent="." unique_id=1428499251 instance=ExtResource("2_sxvro")]

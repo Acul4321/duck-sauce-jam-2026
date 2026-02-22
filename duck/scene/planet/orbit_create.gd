@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	pass
 
 func create_orbit_curve() -> void:
-	var planet_pos = get_parent().global_position
+	var planet_pos = get_parent().position  # Use local position instead of global
 	var angle_to_placement = atan2(planet_pos.y, planet_pos.x)
 	var distance_to_origin = planet_pos.length()
 	
@@ -30,8 +30,9 @@ func create_orbit_curve() -> void:
 		var t = float(i) / resolution * TAU
 		var point = Vector2(a * cos(t) * scale_factor, b * sin(t) * scale_factor)
 		var rotated = point.rotated(angle_to_placement)
-		# Offset to center orbit at world origin (0,0)
-		var offset_point = rotated - global_position
+		# Offset to center orbit at game origin (0,0)
+		# planet_pos is the planet's position in game space, so subtract it to get curve points relative to the Path2D
+		var offset_point = rotated - planet_pos
 		curve.add_point(offset_point)
 
 	self.curve = curve
@@ -69,9 +70,9 @@ func create_instantiation_marker() -> void:
 	circle.polygon = points
 	circle.color = Color(1, 0.8, 0, 0.8)  # Yellow/orange semi-transparent
 	
-	# Get the planet's current position relative to this Path2D
-	var planet_pos = get_parent().global_position - global_position
-	marker.position = planet_pos
+	# The marker should be at (0, 0) because the orbit curve is offset so the planet starts at origin
+	# Since the curve points are calculated as (rotated - planet_pos), the starting point on the path is at (0, 0)
+	marker.position = Vector2.ZERO
 	
 	marker.add_child(circle)
 	orbit_line.add_child(marker)
