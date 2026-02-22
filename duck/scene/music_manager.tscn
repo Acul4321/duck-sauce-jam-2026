@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dmrci6utnri3d"]
+
+[ext_resource type="Script" uid="uid://cglks5utg1cdm" path="res://scene/music_manager.gd" id="1_lexfc"]
+[ext_resource type="AudioStream" uid="uid://df17edba2ykny" path="res://audio/Dormir Avec Toi Dans Les Etoiles.wav" id="2_wttbj"]
+[ext_resource type="AudioStream" uid="uid://crxjrmy53ibpp" path="res://audio/Hey Man, That's My Hotdog (Hold The Vinegar).wav" id="3_1hng1"]
+
+[node name="MusicManager" type="Node" unique_id=699357267 node_paths=PackedStringArray("shop", "main")]
+script = ExtResource("1_lexfc")
+shop = NodePath("Shop")
+main = NodePath("Main")
+
+[node name="Shop" type="AudioStreamPlayer" parent="." unique_id=1581620761]
+stream = ExtResource("3_1hng1")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="Main" type="AudioStreamPlayer" parent="." unique_id=763625225]
+stream = ExtResource("2_wttbj")
+autoplay = true
+bus = &"Music"

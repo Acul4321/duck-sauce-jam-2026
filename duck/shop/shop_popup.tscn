@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://dipyero5jxqdc"]
+
+[ext_resource type="Texture2D" uid="uid://crfwqg53ivqg8" path="res://shop/assets/Template-PopUpShop.png" id="1_se8j8"]
+[ext_resource type="Script" uid="uid://ch2x51yyamem1" path="res://shop/shop_popup.gd" id="1_toonk"]
+[ext_resource type="Texture2D" uid="uid://c20umgja8s0e6" path="res://asset/sprite/planet/Pluto.png" id="3_4bmwa"]
+[ext_resource type="Script" uid="uid://di28rfga80flq" path="res://shop/planet_image.gd" id="4_f6j5c"]
+[ext_resource type="Texture2D" uid="uid://bt2yen8fh6sv2" path="res://shop/assets/BuyButton.png" id="5_lfjqg"]
+[ext_resource type="Texture2D" uid="uid://c8ge0ff2ckvdx" path="res://shop/assets/BuyButton-PressedDown.png" id="6_jr8uc"]
+[ext_resource type="Script" uid="uid://b7g2grfxp1r5d" path="res://shop/buy_button.gd" id="7_jr8uc"]
+[ext_resource type="AudioStream" uid="uid://cmundcfgguvm" path="res://audio/shop_hover.ogg" id="8_da801"]
+[ext_resource type="AudioStream" uid="uid://ndx5keyn6isj" path="res://audio/shop_buy.ogg" id="9_amtmt"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2q1m"]
+texture = ExtResource("1_se8j8")
+region_rect = Rect2(38.28485, 384.01917, 3332.7952, 2469.3809)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da801"]
+atlas = ExtResource("5_lfjqg")
+region = Rect2(700, 1000, 1900, 1500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amtmt"]
+atlas = ExtResource("6_jr8uc")
+region = Rect2(700, 1000, 1900, 1500)
+
+[node name="ShopPopup" type="Node2D" unique_id=1535993591 node_paths=PackedStringArray("planetImage", "planetCost", "planetName", "buyButton")]
+script = ExtResource("1_toonk")
+planetImage = NodePath("Panel/PlanetImage")
+planetCost = NodePath("Panel/PlanetCost")
+planetName = NodePath("Panel/PlanetName")
+buyButton = NodePath("BuyButton")
+
+[node name="Panel" type="Panel" parent="." unique_id=1178250179]
+offset_right = 400.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_x2q1m")
+
+[node name="PlanetImage" type="Sprite2D" parent="Panel" unique_id=756932927]
+position = Vector2(122, 146)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_4bmwa")
+script = ExtResource("4_f6j5c")
+
+[node name="PlanetName" type="Label" parent="Panel" unique_id=1258177635]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 14.0
+offset_right = 180.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 24
+text = "Planet Name"
+
+[node name="PlanetCost" type="Label" parent="Panel" unique_id=376575573]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 240.0
+offset_right = 191.0
+offset_bottom = 285.0
+theme_override_colors/font_color = Color(0.5854947, 0.0809691, 0.45091182, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "1x"
+horizontal_alignment = 2
+
+[node name="BuyButton" type="TextureButton" parent="." unique_id=165892466 node_paths=PackedStringArray("hoverPlayer", "clickPlayer")]
+offset_left = 248.0
+offset_top = 104.0
+offset_right = 376.0
+offset_bottom = 208.0
+texture_normal = SubResource("AtlasTexture_da801")
+texture_pressed = SubResource("AtlasTexture_amtmt")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("7_jr8uc")
+hoverPlayer = NodePath("../HoverPlayer")
+clickPlayer = NodePath("../ClickPlayer")
+
+[node name="HoverPlayer" type="AudioStreamPlayer" parent="." unique_id=910946854]
+stream = ExtResource("8_da801")
+volume_db = -6.592
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="." unique_id=539341634]
+stream = ExtResource("9_amtmt")
+volume_db = -4.0
+
+[connection signal="button_down" from="BuyButton" to="BuyButton" method="_on_button_down"]
+[connection signal="button_up" from="BuyButton" to="BuyButton" method="_on_button_up"]
+[connection signal="mouse_entered" from="BuyButton" to="BuyButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="BuyButton" to="BuyButton" method="_on_mouse_exited"]

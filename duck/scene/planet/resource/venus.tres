@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PlanetClass" format=3 uid="uid://cce0m3sbic43y"]
+
+[ext_resource type="Script" uid="uid://bnp05a6gwm840" path="res://scene/planet/planet_class.gd" id="1_bwufo"]
+[ext_resource type="Texture2D" uid="uid://cajm8y5hf3ids" path="res://asset/sprite/planet/Venus.png" id="2_bwufo"]
+
+[resource]
+script = ExtResource("1_bwufo")
+texture = ExtResource("2_bwufo")
+a = 120.0
+b = 80.0
+speed = 160.0
+scale = 0.038
+name = "Venus"
+reward = 40.0
+required = 2
+metadata/_custom_type_script = "uid://bnp05a6gwm840"
