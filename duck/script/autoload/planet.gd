@@ -8,6 +8,12 @@ var mouse_over_planet: bool = false
 var can_place: bool = true
 var place_mode: bool = false
 
+# Remember last selected planet in shop (persists across shop instances)
+var last_shop_planet: PlanetClass = null
+
+# Track which planets have been unlocked (stays true once unlocked)
+var unlocked_planets: Dictionary = {}
+
 # Dictionary to track how many of each planet type are currently orbiting
 # Key: planet name (String), Value: count (int)
 var orbiting_planets: Dictionary = {}

@@ -11,11 +11,11 @@ var starting_planet: PlanetClass = Planet.get_planet()
 @onready var game_node: Node2D = get_node("%game")
 
 # Zoom settings
-var min_zoom: float = 0.3
+var min_zoom: float = 0.2
 var max_zoom: float = 1.0
 var zoom_speed: float = 0.1
 var target_zoom: float = 1.0
-var current_zoom: float = 0.7
+var current_zoom: float = 0.5
 
 # Blackhole collision offset (additional safe zone around blackhole)
 var blackhole_offset: float = 250.0
@@ -139,8 +139,8 @@ func check_blackhole_collision() -> void:
 	# Calculate distance between centers
 	var distance = mouse_pos.distance_to(blackhole_pos)
 	
-	# Check if radii are overlapping (with additional offset safe zone)
-	if distance < (planet_radius + blackhole_radius + blackhole_offset):
+	# Check if radii are overlapping (with additional offset safe zone that scales with zoom)
+	if distance < (planet_radius + blackhole_radius + (blackhole_offset * current_zoom)):
 		Planet.can_place = false
 
 
