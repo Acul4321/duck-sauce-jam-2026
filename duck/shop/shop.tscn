@@ -64,7 +64,6 @@ offset_left = 1056.8
 offset_top = 232.70004
 offset_right = 1144.8
 offset_bottom = 312.70004
-disabled = true
 planet = ExtResource("4_gy7ao")
 
 [node name="Jupiter" parent="." unique_id=1328344918 instance=ExtResource("2_sxvro")]
@@ -79,7 +78,6 @@ offset_left = 856.80005
 offset_top = 208.70004
 offset_right = 968.80005
 offset_bottom = 304.70004
-disabled = true
 planet = ExtResource("8_xad5q")
 
 [node name="Mercury" parent="." unique_id=2049855629 instance=ExtResource("2_sxvro")]
@@ -119,7 +117,6 @@ offset_left = 720.80005
 offset_top = 152.70004
 offset_right = 784.80005
 offset_bottom = 216.70004
-disabled = true
 planet = ExtResource("13_k6x22")
 
 [node name="Moon" parent="." unique_id=735132464 instance=ExtResource("2_sxvro")]
@@ -127,7 +124,6 @@ offset_left = 768.80005
 offset_top = 232.70004
 offset_right = 832.80005
 offset_bottom = 296.70004
-disabled = true
 planet = ExtResource("9_ljlg5")
 
 [node name="Sun" parent="." unique_id=559638262 instance=ExtResource("2_sxvro")]
@@ -135,7 +131,6 @@ offset_left = 912.80005
 offset_top = 320.70004
 offset_right = 976.80005
 offset_bottom = 384.70004
-disabled = true
 planet = ExtResource("14_pafut")
 
 [node name="ShopPopup" parent="." unique_id=1535993591 instance=ExtResource("5_gy7ao")]

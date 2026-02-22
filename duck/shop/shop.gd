@@ -61,10 +61,13 @@ func _update_button_state(button: PlanetButton) -> void:
 				button.disabled = false
 			else:
 				button.disabled = true
-		else:
-			# This is the highest tier planet (Sun), always enabled and unlocked
+		elif Planet.get_highest_orbiting_planet_tier() == Planet.planets.size() - 1:
+			# Last tier planet is always available
 			Planet.unlocked_planets[planet_name] = true
 			button.disabled = false
+		else:
+			# No higher tier, so just check if this one is unlocked
+			button.disabled = true
 
 func _on_pluto_pressed() -> void:
 	shopPopup.planet = $Pluto.planet
