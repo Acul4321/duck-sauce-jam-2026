@@ -22,7 +22,7 @@ region = Rect2(700, 1000, 1900, 1500)
 atlas = ExtResource("6_jr8uc")
 region = Rect2(700, 1000, 1900, 1500)
 
-[node name="ShopPopup" type="Node2D" unique_id=1535993591 node_paths=PackedStringArray("planetImage", "planetCost", "planetName")]
+[node name="ShopPopup" type="Node2D" unique_id=1535993591 node_paths=PackedStringArray("planetImage", "planetCost", "planetName", "buyButton")]
 script = ExtResource("1_toonk")
 planetImage = NodePath("Panel/PlanetImage")
 planetCost = NodePath("Panel/PlanetCost")
@@ -78,12 +78,10 @@ clickPlayer = NodePath("../ClickPlayer")
 [node name="HoverPlayer" type="AudioStreamPlayer" parent="." unique_id=910946854]
 stream = ExtResource("8_da801")
 volume_db = -6.592
-bus = &"Menu"
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="." unique_id=539341634]
 stream = ExtResource("9_amtmt")
 volume_db = -4.0
-bus = &"Menu"
 
 [connection signal="button_down" from="BuyButton" to="BuyButton" method="_on_button_down"]
 [connection signal="button_up" from="BuyButton" to="BuyButton" method="_on_button_up"]
