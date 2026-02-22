@@ -41,6 +41,8 @@ func _on_shop_button_pressed() -> void:
 		musicManager.toggle()
 	else:
 		shop_instance.position = viewport_center
+		musicManager.toggle()
+
 
 
 func _on_bin_icon_pressed() -> void:
@@ -50,6 +52,7 @@ func _on_bin_icon_pressed() -> void:
 		# Exit placement mode
 		Planet.place_mode = false
 		Planet.can_place = false
+	musicManager.toggle()
 
 
 func button_mouse_entered() -> void:

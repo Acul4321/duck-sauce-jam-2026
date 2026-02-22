@@ -9,6 +9,8 @@ signal close
 @export var planetName: Label
 @export var buyButton: BuyButton
 
+@onready var musicManager = %MusicManager
+
 var planet: PlanetClass:
 	set(value):
 		planet = value
@@ -38,6 +40,7 @@ func _close_shop() -> void:
 	var shop = get_parent()
 	if shop and is_instance_valid(shop):
 		shop.queue_free()
+	musicManager.toggle()
 
 func _process(_delta: float) -> void:
 	# Update buy button state based on available money

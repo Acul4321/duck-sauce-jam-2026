@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	# Set initial text
 	text = str(int(Money.get_money()))
-
+ 
 
 # Called when money changes
 func _on_money_changed(new_amount: float) -> void:
