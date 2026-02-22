@@ -12,5 +12,4 @@ speed = 160.0
 scale = 0.038
 name = "Venus"
 reward = 40.0
-required = 2
 metadata/_custom_type_script = "uid://bnp05a6gwm840"
