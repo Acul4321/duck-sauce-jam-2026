@@ -33,7 +33,7 @@ func _ready() -> void:
 	planets.append(preload("res://scene/planet/resource/saturn.tres")) # Speed 110
 	planets.append(preload("res://scene/planet/resource/jupiter.tres")) # Speed 080
 	planets.append(preload("res://scene/planet/resource/sun.tres")) # Speed 050
-	
+
 	# Set pluto as default
 	current_planet_index = 0
 	current_planet = planets[current_planet_index]
@@ -124,44 +124,45 @@ func get_highest_orbiting_planet_tier() -> int:
 
 
 # Helper function to create and configure a planet node
-func _create_planet_node(planet_resource: PlanetClass, position: Vector2, progress: float = 0.0) -> Node2D:
+func _create_planet_node(planet_resource: PlanetClass, position: Vector2, progress: float = 0.0, direction := 1) -> Node2D:
 	var planet_scene = preload("res://scene/planet/planet.tscn")
 	var new_planet = planet_scene.instantiate()
 	new_planet.planet_resource = planet_resource
 	new_planet.global_position = position
-	
+
 	# Calculate the initial rotation based on orbit direction
 	var initial_rotation = atan2(position.y, position.x)
-	
+
 	# Apply planet properties
 	if new_planet.has_node("orbit/orbitPath/planet"):
 		var sprite = new_planet.get_node("orbit/orbitPath/planet")
 		sprite.texture = planet_resource.texture
 		sprite.rotation = initial_rotation
 		sprite.scale = Vector2(planet_resource.scale, planet_resource.scale)
-	
+
 	# Set orbit dimensions and initial rotation
 	if new_planet.has_node("orbitGhost"):
 		var orbit_ghost = new_planet.get_node("orbitGhost")
 		orbit_ghost.a = planet_resource.a
 		orbit_ghost.b = planet_resource.b
 		orbit_ghost.lerped_rotation = initial_rotation
-	
+
 	if new_planet.has_node("orbit"):
 		var orbit = new_planet.get_node("orbit")
 		if orbit.has_node("orbitPath"):
 			var path_follow = orbit.get_node("orbitPath")
 			path_follow.speed = planet_resource.speed
 			path_follow.progress = progress
+			path_follow.direction = direction
 		orbit.a = planet_resource.a
 		orbit.b = planet_resource.b
-	
+
 	# Connect to the planet's tree_exiting signal to track when it's removed
 	new_planet.tree_exiting.connect(_on_planet_removed.bind(planet_resource))
-	
+
 	# Track this planet as orbiting
 	add_orbiting_planet(planet_resource)
-	
+
 	return new_planet
 
 
