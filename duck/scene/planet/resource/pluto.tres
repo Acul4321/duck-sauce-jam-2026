@@ -6,11 +6,9 @@
 [resource]
 script = ExtResource("1_u1dfh")
 texture = ExtResource("2_f0hxe")
-a = 150.0
 b = 100.0
 speed = 200.0
 scale = 0.015
 name = "Pluto"
-cost = 1
 required = 0
 metadata/_custom_type_script = "uid://bnp05a6gwm840"

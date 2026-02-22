@@ -6,10 +6,11 @@
 [resource]
 script = ExtResource("1_qtyy6")
 texture = ExtResource("2_qtyy6")
-a = 180.0
-b = 200.0
+a = 300.0
+b = 180.0
 speed = 110.0
 scale = 0.08
 name = "Saturn"
-reward = 500.0
+cost = 120
+reward = 50
 metadata/_custom_type_script = "uid://bnp05a6gwm840"

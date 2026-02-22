@@ -8,6 +8,12 @@ var mouse_over_planet: bool = false
 var can_place: bool = true
 var place_mode: bool = false
 
+# Remember last selected planet in shop (persists across shop instances)
+var last_shop_planet: PlanetClass = null
+
+# Track which planets have been unlocked (stays true once unlocked)
+var unlocked_planets: Dictionary = {}
+
 # Dictionary to track how many of each planet type are currently orbiting
 # Key: planet name (String), Value: count (int)
 var orbiting_planets: Dictionary = {}
@@ -60,6 +66,14 @@ func get_planet() -> PlanetClass:
 # Get the index of a planet resource in the planets array
 func get_planet_index(planet_resource: PlanetClass) -> int:
 	return planets.find(planet_resource)
+
+
+# Get the next tier planet (one tier up) without modifying current_planet
+func get_next_tier_planet(planet_resource: PlanetClass) -> PlanetClass:
+	var planet_index = get_planet_index(planet_resource)
+	if planet_index >= 0 and planet_index < planets.size() - 1:
+		return planets[planet_index + 1]
+	return planet_resource  # Return same if already max tier
 
 
 # Add a planet to the orbiting count

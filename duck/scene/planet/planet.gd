@@ -54,9 +54,24 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 			return
 		
 		# Get the two planet positions and calculate midpoint
-		var this_pos = global_position
-		var other_pos = area.owner.global_position
-		var midpoint = (this_pos + other_pos) / 2.0
+		# Get actual sprite positions (they're on the orbital paths)
+		var this_sprite_pos = Vector2.ZERO
+		var other_sprite_pos = Vector2.ZERO
+		
+		if has_node("orbit/orbitPath/planet"):
+			this_sprite_pos = get_node("orbit/orbitPath/planet").global_position
+		else:
+			this_sprite_pos = global_position
+			
+		if area.owner.has_node("orbit/orbitPath/planet"):
+			other_sprite_pos = area.owner.get_node("orbit/orbitPath/planet").global_position
+		else:
+			other_sprite_pos = area.owner.global_position
+		
+		# Calculate midpoint in global space
+		var midpoint_global = (this_sprite_pos + other_sprite_pos) / 2.0
+		# Convert to parent's local space
+		var midpoint = get_parent().to_local(midpoint_global)
 		
 		# Get current progress from both planets' PathFollow2D
 		var this_progress = 0.0
@@ -77,9 +92,8 @@ func _on_area_2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_inde
 		area.owner.free()
 		self.queue_free()
 		
-		# Get next planet and create it at the midpoint
-		Planet.next_planet()
-		var next_planet_resource = Planet.get_planet()
+		# Get next tier planet without modifying the global current planet
+		var next_planet_resource = Planet.get_next_tier_planet(planet_resource)
 		var new_planet = Planet._create_planet_node(next_planet_resource, midpoint, avg_progress)
 		
 		# Add to scene
